@@ -16,7 +16,6 @@ body {
     flex-direction: row;
 }
 
-
 .left-container {
     background-color: rgba(236, 234, 246, 1);
     width: 50%;
@@ -227,16 +226,16 @@ body {
     /* border: 1px solid black; */
     width: fit-content;
     height: fit-content;
-    position: absolute  ;
+    position: absolute;
     margin-left: 750px;
     margin-top: 125px;
 }
 
-.down-img{
+.down-img {
     /* border: 1px solid black; */
     width: fit-content;
     height: fit-content;
-    position: absolute  ;
+    position: absolute;
     margin-left: 650px;
     margin-top: 275px;
 }
@@ -291,7 +290,7 @@ body {
     flex-direction: column;
 }
 
-.form{
+.form {
     width: 500px;
     height: fit-content;
     margin-top: -25px;
@@ -322,7 +321,7 @@ body {
     color: rgba(51, 51, 102, 1);
 }
 
-#btn-start{
+#btn-start {
     margin-top: 20px;
     background-color: rgba(0, 200, 166, 1);
     height: 40px;

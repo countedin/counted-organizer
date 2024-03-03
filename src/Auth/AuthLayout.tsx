@@ -1,11 +1,12 @@
 import { Outlet } from "react-router-dom";
+import signin from '../assets/Images/siginin.png'
 
 const AuthLayout = () => {
   return (
 
         <>
-          <div className="flex flex-right-100 justify-content-center align-items-center left-container" >
-            <img src="public/assets/Images/siginin.png" alt="signin" id="signin-img"/>
+      <div className="flex flex-right-100 justify-content-center align-items-center left-container" >
+            <img src={signin} alt="signin" id="signin-img"/>
           </div>
           <section className="right-container">
             <div className="row1">
@@ -14,8 +15,7 @@ const AuthLayout = () => {
             <Outlet/>
           </section>
         </>
-      
-    )
+  )
 }
 
-export default AuthLayout
+      export default AuthLayout
