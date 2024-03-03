@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
-import signin from '../public/assets/Images/siginin.png'
-import frame from '../public/assets/Images/Frame.png'
+import signin from '../assets/Images/siginin.png'
+import frame from '../assets/Images/Frame.png'
 const AuthLayout = () => {
   return (
 

@@ -17,7 +17,7 @@ const NewEvent = () => {
   return (
     <div className="tab-content">
       <div className="left-img">
-        <img src="public/assets/Images/LeftImage.png" alt="leftimg" width="168.83px" height="443.89px" />
+        <img src="" alt="leftimg" width="168.83px" height="443.89px" />
       </div>
       <form className="form-content">
         <h3 className="card-txt">Tell us about the event</h3>
