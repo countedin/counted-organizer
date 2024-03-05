@@ -8,6 +8,11 @@ import { TimePicker } from "@mui/x-date-pickers/TimePicker";
 import dayjs, { Dayjs } from "dayjs";
 import React from "react";
 import Button from '@mui/material/Button';
+import leftimg from '../../assets/Images/LeftImage.png'
+import rightimg from '../../assets/Images/RightImage.png'
+import downimg from '../../assets/Images/DownImage.png'
+
+
 
 const NewEvent = () => {
 
@@ -16,8 +21,8 @@ const NewEvent = () => {
 
   return (
     <div className="tab-content">
-      <div className="left-img">
-        <img src="" alt="leftimg" width="168.83px" height="443.89px" />
+      <div>
+        <img src={leftimg} alt="leftimg" className="left-img" />
       </div>
       <form className="form-content">
         <h3 className="card-txt">Tell us about the event</h3>
@@ -73,11 +78,11 @@ const NewEvent = () => {
           </Button>
         </div>
       </form>
-      <div className="right-img">
-        <img src="public/assets/Images/RightImage.png" alt="rightimg" width="151.9px" height="440px" />
+      <div>
+        <img src={rightimg} alt="rightimg" className="right-img" width="151.9px" height="440px" />
       </div>
-      <div className="down-img">
-        <img src="/public/assets/Images/DownImage.png" alt="douwnimg" width="60.26" height="286.63" />
+      <div >
+        <img src={downimg} className="down-img" alt="douwnimg" width="60.26" height="286.63" />
       </div>
     </div>
   )
