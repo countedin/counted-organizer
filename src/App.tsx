@@ -12,34 +12,32 @@ import Support from "./Root/Pages/Support";
 import Profile from "./Root/Pages/Profile";
 
 function App() {
-  
-
   return (
     <>
       {/* <main className="main-screen"> */}
-            <Routes>
-              <Route element={<SignUpLayout/>}>
-                <Route path="/signup" element={<SignUp/>} />
-              </Route>
-              
-                {/**Public Routes */}
-              <Route element={<AuthLayout/>}>
-                <Route path="/signin" element={<SignIn/>} />
-                <Route path="/verification" element={<Verification/>}/>
-                <Route path="/details" element={<Details/>} />
-                <Route path="/pincode" element={<Pincode/>} />
-              </Route>
+      <Routes>
+        <Route element={<SignUpLayout />}>
+          <Route path="/signup" element={<SignUp />} />
+        </Route>
 
-                {/**Private Routes */}
-                <Route index element={<Home />}/>
-                <Route path="/aboutus" element={<AboutUs />}/>
-                <Route path="/support" element={<Support />}/>
-                <Route path="/profile2" element={<Profile />}/>    
-            </Routes>
+        {/**Public Routes */}
+        <Route element={<AuthLayout />}>
+          <Route path="/signin" element={<SignIn />} />
+          <Route path="/verification" element={<Verification />} />
+          <Route path="/details" element={<Details />} />
+          <Route path="/pincode" element={<Pincode />} />
+        </Route>
+
+        {/**Private Routes */}
+        <Route index element={<Home />} />
+        <Route path="/aboutus" element={<AboutUs />} />
+        <Route path="/support" element={<Support />} />
+        <Route path="/profile2" element={<Profile />} />
+      </Routes>
 
       {/* </main> */}
     </>
-  )
+  );
 }
 
-export default App
+export default App;
