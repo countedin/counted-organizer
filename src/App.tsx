@@ -16,7 +16,7 @@ function App() {
 
   return (
     <>
-      <main className="main-screen">
+      {/* <main className="main-screen"> */}
             <Routes>
               <Route element={<SignUpLayout/>}>
                 <Route path="/signup" element={<SignUp/>} />
@@ -37,7 +37,7 @@ function App() {
                 <Route path="/profile2" element={<Profile />}/>    
             </Routes>
 
-      </main>
+      {/* </main> */}
     </>
   )
 }

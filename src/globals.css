@@ -5,8 +5,8 @@ body {
     height: 100vh;
     width: auto;
     margin: 0;
-    /* overflow-y: visible;
-    overflow-x: visible ; */
+    /* overflow-y: visible; */
+    overflow-x: hidden ;
 }
 
 .main-screen {
@@ -16,10 +16,10 @@ body {
     flex-direction: row;
 }
 
-.left-container {
+/* .left-container {
     background-color: rgba(236, 234, 246, 1);
     width: 50%;
-}
+} */
 
 #signin-img {
     display: flex;
@@ -398,5 +398,10 @@ body {
     margin-left: 50px;
 }
 
-
+.right-part{
+    border: 1px solid red;
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+}
 
