@@ -15,8 +15,16 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import TableCell from "@mui/material/TableCell";
 import TableBody from "@mui/material/TableBody";
+import { useNavigate } from 'react-router-dom';
 
 const ExportPage = () => {
+
+  const navigate = useNavigate();
+
+  const handleBackButtonClick = () => {
+    navigate(-1); // Navigate back in the history stack
+  };
+
 
   function createData(slno: number, name: string, usn: string, deapartment: string, year: number, email: string) {
     return { slno, name, usn, deapartment, year, email };
@@ -37,7 +45,7 @@ const ExportPage = () => {
       <TopBar />
       <div className="exportWrapper">
         <div className="backArrow">
-          <IconButton type="button" sx={{ p: '10px' }} aria-label="ArrowBack">
+          <IconButton type="button" sx={{ p: '10px' }} aria-label="ArrowBack" onClick={handleBackButtonClick}>
             <ArrowBackIcon fontSize="large" />
           </IconButton>
         </div>

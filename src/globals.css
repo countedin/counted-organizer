@@ -610,3 +610,42 @@ body {
 #downloadButton{
   background-color: rgba(0, 200, 166, 1); 
 }
+
+.aboutusWrapper{
+  display: flex;
+  flex-direction: row;
+  height: fit-content;
+  padding: 10px;
+  margin: 15px;
+  gap: 25px;
+}
+
+.leftaboutus{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.rightaboutus{
+  display: flex;
+  flex-direction: column;
+  margin: 0px;
+  padding: 0px;
+}
+
+.abouttxt{
+  font-family: "Poppins",sans-serif;
+  font-size: 40px;
+  font-weight: 600;
+  color: rgba(51, 51, 102, 1);
+}
+
+.aboutContent{
+  margin: 10px;
+  color: rgba(61, 48, 162, 1);
+  width: fit-content ;
+  font-family: "Poppins",sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+}
