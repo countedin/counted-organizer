@@ -8,8 +8,9 @@ import Details from "./Auth/NewForm/Details";
 import Pincode from "./Auth/NewForm/Pincode";
 import Home from "./Root/Pages/Home";
 import AboutUs from "./Root/Pages/AboutUs";
-import Support from "./Root/Pages/Support";
-import Profile from "./Root/Pages/Profile";
+import NewEvent from "./Root/Pages/NewEvent";
+import PastEvents from "./Root/Pages/PastEvents";
+import ExportPage from "./Root/Pages/ExportPage";
 
 function App() {
   return (
@@ -31,8 +32,9 @@ function App() {
         {/**Private Routes */}
         <Route index element={<Home />} />
         <Route path="/aboutus" element={<AboutUs />} />
-        <Route path="/support" element={<Support />} />
-        <Route path="/profile2" element={<Profile />} />
+        <Route path="/newevent" element={<NewEvent />} />
+        <Route path="/pastevents" element={<PastEvents />} />
+        <Route path="/exportPage" element={<ExportPage />} />
       </Routes>
 
       {/* </main> */}
