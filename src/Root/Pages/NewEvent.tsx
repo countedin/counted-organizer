@@ -6,7 +6,7 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import Autocomplete from "@mui/material/Autocomplete";
 import { TimePicker } from "@mui/x-date-pickers/TimePicker";
 import dayjs, { Dayjs } from "dayjs";
-import React from "react";
+import React, { useState } from "react";
 import Button from '@mui/material/Button';
 import leftimg from '../../assets/Images/LeftImage.png'
 import rightimg from '../../assets/Images/RightImage.png'
@@ -16,6 +16,26 @@ import Box from "@mui/material/Box";
 
 
 const NewEvent = () => {
+
+  const [eventDetails, setEventDetails] = useState({
+    eventName: '',
+    venue: null,
+    eventDate: null,
+    startTime: dayjs('2022-04-17T15:30'),
+    endTime: dayjs(),
+  });
+
+  const handleEventDateChange = (date: any) => {
+    setEventDetails({ ...eventDetails, eventDate: date });
+  };
+
+  const handleStartTimeChange = (time: any) => {
+    setEventDetails({ ...eventDetails, startTime: time });
+  };
+
+  const handleEndTimeChange = (time: any) => {
+    setEventDetails({ ...eventDetails, endTime: time });
+  };
 
   const style = {
     position: 'absolute',
@@ -31,21 +51,34 @@ const NewEvent = () => {
     pb: 3,
   };
 
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => {
-    setOpen(true);
-  };
-  const handleClose = () => {
-    setOpen(false);
+  const [openParent, setOpenParent] = useState(false);
+  const [openChild, setOpenChild] = useState(false);
+
+  const handleOpenParent = () => {
+    setOpenParent(true);
   };
 
-  // const [open, setOpen] = React.useState(false);
-  // const handleOpen = () => {
-  //   setOpen(true);
-  // };
-  // const handleClose = () => {
-  //   setOpen(false);
-  // };
+  const handleCloseParent = () => {
+    setOpenParent(false);
+  };
+
+  const handleOpenChild = () => {
+    setOpenChild(true);
+  };
+
+  const handleCloseChild = () => {
+    setOpenChild(false);
+  };
+
+  const handleEdit = () => {
+    setOpenParent(false);
+  };
+
+  const handleProceed = () => {
+    setOpenParent(false);
+    setOpenChild(true);
+  };
+
 
   const leftimgStyle = {
     width: '178.83px',
@@ -66,7 +99,7 @@ const NewEvent = () => {
   };
 
   const venue = [{ label: 'U.R Rao Seminar hall' }, { label: 'A.P.J Abdul Kalam Seminar Hall' }, { label: 'Sir M. Visveswaraya Auditorium' }, { label: 'Other' }]
-  const [value, setValue] = React.useState<Dayjs | null>(dayjs('2022-04-17T15:30'));
+  // const [value, setValue] = React.useState<Dayjs | null>(dayjs('2022-04-17T15:30'));
 
   return (
 
@@ -80,14 +113,18 @@ const NewEvent = () => {
           <div className="form">
             <div className="inp-container">
               <h4 className="inp-txt">Share the name of the event</h4>
-              <TextField fullWidth label="Event name" variant="outlined" color="success" />
+              <TextField fullWidth label="Event name" variant="outlined" color="success"
+                value={eventDetails.eventName}
+                onChange={(e) => setEventDetails({ ...eventDetails, eventName: e.target.value })} />
             </div>
             <div className="inp-container">
               <h4 className="inp-txt">Where did this happen ?</h4>
               <Autocomplete
                 disablePortal
                 options={venue}
-                renderInput={(params) => <TextField {...params} label="Venue" color="success" />}
+                renderInput={(params) => <TextField {...params} label="Venue" color="success"
+                  value={eventDetails.venue}
+                  onChange={(e) => setEventDetails({ ...eventDetails, eventName: e.target.value })} />}
               />
             </div>
             <div className="inp-container">
@@ -95,6 +132,8 @@ const NewEvent = () => {
               <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <DatePicker
                   label="Date"
+                  value={eventDetails.eventDate}
+                  onChange={handleEventDateChange}
                   slotProps={{
                     textField: {
                       helperText: 'MM/DD/YYYY',
@@ -107,14 +146,16 @@ const NewEvent = () => {
               <h4 className="inp-txt">Tell us the event's start and end times.</h4>
               <LocalizationProvider dateAdapter={AdapterDayjs} >
                 <DemoContainer components={['TimePicker', 'TimePicker']} >
-                  <label htmlFor="From" className="inp-txt">From</label>
+                  <label className="inp-txt">From</label>
                   <TimePicker
+                    value={eventDetails.startTime}
+                    onChange={handleStartTimeChange}
                     defaultValue={dayjs('2022-04-17T15:30')}
                   />
-                  <label htmlFor="To" className="inp-txt">To</label>
+                  <label className="inp-txt">To</label>
                   <TimePicker
-                    value={value}
-                    onChange={(newValue) => setValue(newValue)}
+                    value={eventDetails.endTime}
+                    onChange={handleEndTimeChange}
                   />
                 </DemoContainer>
               </LocalizationProvider>
@@ -124,35 +165,45 @@ const NewEvent = () => {
               fullWidth
               variant="contained"
               id="btn-start"
-              onClick={handleOpen}
+              onClick={handleOpenParent}
             >
               Start
             </Button>
             <Modal
-              open={open}
-              onClose={handleClose}
+              open={openParent}
+              onClose={handleCloseParent}
               aria-labelledby="parent-modal-title"
               aria-describedby="parent-modal-description"
             >
               <Box sx={{ ...style, width: 400 }}>
-                <h2 id="parent-modal-title">Text in a modal</h2>
-                <p id="parent-modal-description">
-                  Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+                {/* Display entered details in the parent modal */}
+                <h2 id="parent-modal-title">Event Details</h2>
+                <div id="parent-modal-description">
+                  Event Name: {eventDetails.eventName}
+                  Venue: {eventDetails.venue}
+                  Date: {eventDetails.eventDate}
+                  <>
+                    From: {eventDetails.startTime.format('HH:mm')}
+                    To: {eventDetails.endTime.format('HH:mm')}
+                  </>
+                </div>
+                <Button onClick={handleEdit}>Edit</Button>
+                <Button onClick={handleProceed}>Proceed</Button>
+              </Box>
+            </Modal>
+            {/* Add a separate modal for the child */}
+            <Modal
+              open={openChild}
+              onClose={() => setOpenChild(false)}
+              aria-labelledby="child-modal-title"
+              aria-describedby="child-modal-description"
+            >
+              <Box sx={{ ...style, width: 200 }}>
+                <h2 id="child-modal-title">Child Modal Content</h2>
+                <p id="child-modal-description">
+                  {/* Add content for the child modal */}
                 </p>
-                <Modal
-                  open={open}
-                  onClose={handleClose}
-                  aria-labelledby="child-modal-title"
-                  aria-describedby="child-modal-description"
-                >
-                  <Box sx={{ ...style, width: 200 }}>
-                    <h2 id="child-modal-title">Text in a child modal</h2>
-                    <p id="child-modal-description">
-                      Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    </p>
-                    <Button onClick={handleClose}>Close Child Modal</Button>
-                  </Box>
-                </Modal>
+                <Button onClick={() => setOpenChild(false)}>Close Child Modal</Button>
               </Box>
             </Modal>
 
