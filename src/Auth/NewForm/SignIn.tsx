@@ -27,7 +27,7 @@ const SignIn = () => {
       <div className="signin-form">
         <h3 id="signin-txt1">Let's create your account</h3>
         <h4 id="signin-txt2">Enter the details as per the records</h4>
-        <form  noValidate>
+        <div>
           <TextField
             variant="outlined"
             color="success"
@@ -53,16 +53,12 @@ const SignIn = () => {
             autoComplete="current-employeeID"
           />
           <Button
-            type="submit"
-            fullWidth
             variant="contained"
             id="btn"
           >
             Register
           </Button>
-        </form>
-
-
+        </div>
       </div>
     </div>
   )

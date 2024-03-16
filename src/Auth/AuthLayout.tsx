@@ -4,7 +4,7 @@ import frame from "../assets/Images/Frame.png";
 const AuthLayout = () => {
   return (
     <>
-      {/* bg-[#eceaf6] */}
+      
 
       {/* <div className="flex flex-right-100 justify-content-center align-items-center bg-[#eceaf6]"> */}
       <div className="authPageWrapper">
