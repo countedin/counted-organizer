@@ -3,7 +3,8 @@ import TextField from "@mui/material/TextField"
 
 const Details = () => {
   return (
-    <div className="detail-container">
+    <div className="row-2">
+      <div className="detail-container">
       <h3 id="details-txt1">Check your details</h3>
       <h4 id="details-txt2">We know you</h4>
       <form noValidate>
@@ -48,6 +49,8 @@ const Details = () => {
       </form>
       <h5 className="txt-3">*Details in this page are not editable. Please write us to <a href="mailto:countedin.app@gmail.com" className="link">countedin.app@gmail.com</a>  if incorrect details are displayed.</h5>
     </div>
+    </div>
+    
   )
 }
 

@@ -1,12 +1,11 @@
 import Button from '@mui/material/Button'
 import TextField from '@mui/material/TextField'
 import { useState } from 'react'
-import GoogleButton from 'react-google-button'
-import { apiRegNewUser } from '../../services/BEApis/AuthAPIs'
+import { apiRegExistingUser } from '../../services/BEApis/AuthAPIs'
 import Alert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
 
-const SignUp = () => {
+const SignIn = () => {
 
   const [regEmail, setRegEmail] = useState("");
   const [alertMessage, setAlertMessage] = useState("");
@@ -15,13 +14,14 @@ const SignUp = () => {
   const callRegister = async () => {
     if (regEmail.endsWith("@nmit.ac.in")) {
       console.log(regEmail)
+      
 
-      const apiRes = await apiRegNewUser({ ipEmail: regEmail })
+      const apiRes = await apiRegExistingUser({ ipEmail: regEmail })
 
       console.log(apiRes)
 
     } else {
-      setAlertMessage("Please enter the email provided by the college.")
+      setAlertMessage("Please enter valid Email ID.")
 
     }
   }
@@ -41,20 +41,15 @@ const SignUp = () => {
         label="Email ID"
         onChange={(e) => { setRegEmail(e.target.value) }}
       />
+      
       <Button
-        // type="submit"
-
         variant="contained"
         id="btn"
         onClick={callRegister}
       >
         Login
       </Button>
-      <GoogleButton
-        id='btn-google'
-        type="light" // can be light or dark
-        onClick={() => { console.log('Google button clicked') }}
-      />
+      
 
       {alertMessage && (
         <Stack sx={{
@@ -80,4 +75,4 @@ const SignUp = () => {
   )
 }
 
-export default SignUp
+export default SignIn
