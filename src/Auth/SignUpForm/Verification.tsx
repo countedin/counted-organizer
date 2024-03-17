@@ -3,8 +3,8 @@ import TextField from "@mui/material/TextField"
 
 const Verification = () => {
   return (
-    <div className="row2">
-      <div className="signin-form">
+    // <div className="row2">
+      <div className="signup-form">
         <h3 id="verification-txt1">Enter the Verification Code</h3>
         <h4 id="verification-txt2">We've sent a 6 digit code to your mail</h4>
         <div >
@@ -27,7 +27,7 @@ const Verification = () => {
 
 
       </div>
-    </div>
+    // </div>
   )
 }
 
