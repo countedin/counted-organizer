@@ -11,7 +11,7 @@ const Details = () => {
       <div className="flex flex-col gap-6 detail-card">
         <TextField
           disabled
-          id="filled-disabled"
+          // id="filled-disabled"
           label="Name"
           defaultValue="Lecturer Name"
           variant="filled"
@@ -19,7 +19,7 @@ const Details = () => {
 
         <TextField
           disabled
-          id="filled-disabled"
+          // id="filled-disabled"
           label="Employee ID"
           defaultValue="SS0785"
           variant="filled"
@@ -27,7 +27,7 @@ const Details = () => {
 
         <TextField
           disabled
-          id="filled-disabled"
+          // id="filled-disabled"
           label="Department"
           defaultValue="Computer Science and Engineering"
           variant="filled"
@@ -35,14 +35,14 @@ const Details = () => {
 
         <TextField
           disabled
-          id="filled-disabled"
+          // id="filled-disabled"
           label="Email"
           defaultValue="lecturername@gmail.com"
           variant="filled"
         />
 
         <Button
-          type="submit"
+          // type="submit"
           fullWidth
           variant="contained"
           id="btn"

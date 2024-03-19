@@ -184,8 +184,8 @@ body {
   text-decoration: none;
 }
 
-.pincode-form {
-  position: absolute;         /* Auth - SignUpForm - SignUp - pincode-form */
+.pincode-form {         /* Auth - SignUpForm - SignUp - pincode-form */
+  position: absolute;         
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -209,90 +209,126 @@ body {
   margin-right: 25px;
 }
 
-
-.navbar {
+.navbar {                /* Root - Pages - HomeTab - navbar */
   background-color: rgba(61, 48, 162, 1);
-  padding: 0px;
+  height: 60px;
   color: white;
-  position: sticky;
-  top: 0;
-  width: 100vw;
-  height: 55px;
+  position: sticky !important;
   display: flex;
   justify-content: space-between;
-  z-index: 2000;
+  align-items: center;
 }
 
-.logo {
-  margin-top: 10px;
-  margin-left: 20px;
+.logo {                 /* Root - Pages - HomeTab - logo */      
+  padding: 5px;
+  margin: 10px;
 }
 
-.nav-content {
+.nav-content {          /* Root - Pages - HomeTab - nav-content */   
   display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
 }
 
-.nav-item {
-  font-family: "Poppins", sans-serif;
-  cursor: pointer;
-  margin-right: 25px;
-  margin-top: 15px;
-}
-
-#nav-item {
+#nav-item {             /* Root - Pages - HomeTab - nav-item */
   color: white;
   text-decoration: none;
   font-family: "Poppins", sans-serif;
   cursor: pointer;
   margin-right: 25px;
-  margin-top: 15px;
 }
 
-.nav-item:hover {
+#nav-item:hover {         /* Root - Pages - HomeTab - nav-item */
   color: rgba(0, 200, 166, 1);
 }
 
-/* .left-img {
-  border: 1px solid black;
-  width: "10px";
-  height: "20px";
+.modal {                /* Root - Pages - TopBar - modal */
   display: flex;
-    margin-right: 750px;
-    margin-top: 0px;
-} */
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
 
-/* .right-img {
-  border: 1px solid black;
-  width: fit-content;
-  height: fit-content;
+.modal-description {          /* Root - Pages - TopBar - modal-content */
+  background-color: #fefefe;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.close {                /* Root - Pages - TopBar - modal-close */
+  color: rgba(51, 51, 102, 0.7);
+  float: right;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {            /* Root - Pages - TopBar - modal-close */
+  color: rgba(0, 200, 166, 1);
+  text-decoration: none;
+} 
+
+.modal-description, h2{             /* Root - Pages - TopBar - modal - h2 */
+  font-family: "Poppins",sans-serif;
+  font-weight: 600;
+  font-size: large;
+}
+
+.modal-description, h4{             /* Root - Pages - TopBar - modal- h4 */
+  font-family: "Poppins",sans-serif;
+  font-weight: 500;
+  font-size: small;
+}
+
+.modal-description .MuiAutocomplete-root,     /* Root - Pages - TopBar - modal - Textfields */
+.modal-description .MuiTextField-root {
+  margin-bottom: 10px; 
+  width: calc(100% - 15px);
+}
+
+.helper-text{            /* Root - Pages - TopBar - modal - helpertext */
   display: flex;
-  margin-left: 750px;
-  margin-top: 0px;
-} */
+  width: calc(100% - 15px);  
+  justify-content: flex-end;
+  font-size: 0.8em; 
+  color: #111;
+}
 
-/* .down-img {
-  border: 1px solid black;
-  width: fit-content;
-  height: fit-content;
+#btn-start {              /* Root - Pages - TopBar - modal - btn-start */
+  margin-top: 20px;
+  background-color: rgba(0, 200, 166, 1);
+  height: 40px;
+}
+
+.profile-logo {           /* Root - Pages - TopBar - modal - profile-logo */
   display: flex;
-  margin-left: 650px;
-  margin-top: 275px;
-} */
+  justify-content: center;
+  margin-bottom: 10px;
+}
 
-.home-tab {
-  width: 100vw;
+.profile-txt {            /* Root - Pages - TopBar - modal - profile-txt */
+  color: rgba(179, 38, 30, 1);
+}
+
+.home-tab {           /* Root - Pages - HomeTab - home-tab */
   height: 50px;
   background-color: rgba(219, 234, 254, 1);
 }
 
-.tab-list {
-  width: 100%;
+.tab-list {            /* Root - Pages - HomeTab - tab-list */
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
 }
 
-#tab-event {
+#tab-event {                /* Root - Pages - HomeTab - tab-event */
   font-family: "Poppins", sans-serif;
   font-size: medium;
   width: 500px;
@@ -305,117 +341,74 @@ body {
   background-color: rgba(219, 234, 254, 1);
 }
 
-#tab-event:focus {
+#tab-event:focus {          /* Root - Pages - HomeTab - tab-event */
   background-color: white;
 }
 
-.newEventWrapper{
-  background-color: rgba(219, 234, 254, 0.2);
+.newEventWrapper {           /* Root - Pages - NewEvent - newEventWrapper */
+  position: relative;
   display: flex;
-  flex-direction: row;
-  gap: 0px;
-  width: auto;
   justify-content: center;
   align-items: center;
-}
-
-/* .newEvent { 
-    background-color: rgba(219, 234, 254, 0.2);
-    width: auto;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-} */
-
-.form-content {
-  background-color: #fefefe;
-  width: 600px;
-  margin-top: 0px;
-  height: fit-content;
-  display: flex;
-  flex-direction: column;
-}
-
-.form {
-  width: 500px;
-  height: fit-content;
-  margin-top: -25px;
-  margin-left: 30px;
-  display: flex;
-  flex-direction: column;
-  column-gap: 5px;
-}
-
-.card-txt {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-left: 75px;
+  padding: 35px;
   margin-top: 10px;
-  width: 360px;
+  background-color: rgba(219, 234, 254, 0.3);
+}
+
+.newEventWrapper img {        /* Root - Pages - NewEvent - images */
+  position: relative;
+  bottom: -95px;
+}
+
+img[alt="leftImage"] {       /* Root - Pages - NewEvent - leftimg */
+  left: 155px;
+}
+
+img[alt="rightImg"] {       /* Root - Pages - NewEvent - rightimg */
+  right: 135px;
+}
+
+img[alt="downImg"] {        /* Root - Pages - NewEvent - downimg */
+  bottom: -159px;
+  right: 0;
+  margin-right: 50px; /* Adjust as needed */
+}
+
+.newEventForm {            /* Root - Pages - NewEvent - newEventForm */
+  background-color: #fefefe;
+  width: 499px;
+  min-width: 200px;
+  margin-left: 150px;
+  padding: 25px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card-txt {              /* Root - Pages - NewEvent - card-txt */
+  margin: 10px 0;
   font-family: "Poppins", sans-serif;
   color: rgba(51, 51, 102, 1);
   font-weight: 600;
+  text-align: center;
 }
 
-.inp-txt {
+.inp-container{         /* Root - Pages - NewEvent - inp-container */
+  width: 100%;
+}
+
+.inp-txt {              /* Root - Pages - NewEvent - inp-txt */
   font-family: "Poppins", sans-serif;
   font-size: small;
   font-weight: 500;
-  font-size: small;
-  margin-bottom: 3px;
   color: rgba(51, 51, 102, 1);
 }
 
-#btn-start {
+#btn-start {            /* Root - Pages - NewEvent - btn-start */
   margin-top: 20px;
   background-color: rgba(0, 200, 166, 1);
   height: 40px;
-}
-
-.modal {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
-}
-
-.modal-content {
-  background-color: #fefefe;
-  padding: 20px;
-  border-radius: 5px;
-}
-
-.close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.close:hover,
-.close:focus {
-  color: black;
-  text-decoration: none;
-}
-
-.profile-logo {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 10px;
-}
-
-.profile-txt {
-  color: rgba(179, 38, 30, 1);
 }
 
 .screen-width {

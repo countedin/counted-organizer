@@ -67,7 +67,7 @@ const PastEvents = () => {
           </div>
           <div className="buttonWrapper">
             <Button
-              type="submit"
+              // type="submit"
               variant="contained"
               id="attendanceButton"
               onClick={handleButtonClick}
