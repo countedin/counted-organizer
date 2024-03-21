@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
 import frame from "../assets/Images/Frame.png";
-import Signup from "../assets/Images/SignUp.png";
+import Signup from "../assets/Images/Signup.png";
 
 
 const SignUpLayout = () => {
