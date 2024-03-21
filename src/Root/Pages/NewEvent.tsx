@@ -3,7 +3,7 @@ import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import Autocomplete from "@mui/material/Autocomplete";
+// import Autocomplete from "@mui/material/Autocomplete";
 import { TimePicker } from "@mui/x-date-pickers/TimePicker";
 import leftimg from "../../assets/Images/LeftImage.png"
 import downimg from "../../assets/Images/DownImage.png"
@@ -13,8 +13,14 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 import Button from '@mui/material/Button';
 import { SetStateAction, useState } from "react";
 // import dayjs from "dayjs";
-import Modal from "@mui/material/Modal";
-import Box from "@mui/material/Box";
+// import Modal from "@mui/material/Modal";
+// import Box from "@mui/material/Box";
+import FormControl from "@mui/material/FormControl";
+import InputLabel from "@mui/material/InputLabel";
+import Select from "@mui/material/Select";
+import MenuItem from "@mui/material/MenuItem";
+import { apiCreateNewEvent } from "../../services/BEApis/EventAPIs";
+// import { apiCreateNewEvent } from "../../services/BEApis/EventAPIs";
 
 
 const NewEvent = () => {
@@ -32,12 +38,6 @@ const NewEvent = () => {
     maxHeight: "440px",
   }
 
-  const Venue = [
-    { label: "U.R Rao Seminar hall" },
-    { label: "A.P.J Abdul Kalam Seminar Hall" },
-    { label: "Sir M. Visveswaraya Auditorium" },
-    { label: "Other" },
-  ];
 
   const theme = createTheme({
     palette: {
@@ -47,38 +47,36 @@ const NewEvent = () => {
     },
   });
 
-  const [openParent, setOpenParent] = useState(false);
-  const [openChild, setOpenChild] = useState(false);
-  const [openQRModal, setOpenQRModal] = useState(false);
-  const [openFinishModal, setOpenFinishModal] = useState(false);
+  // const [openParent, setOpenParent] = useState(false);
+  // const [openChild, setOpenChild] = useState(false);
+  // const [openQRModal, setOpenQRModal] = useState(false);
+  // const [openFinishModal, setOpenFinishModal] = useState(false);
 
-  const handleStartButtonClick = () => {
-    setOpenParent(true);
-  };
 
-  const handleEditButtonClick = () => {
-    setOpenParent(false); 
-  };
 
-  const handleProceedButtonClick = () => {
-    setOpenParent(false);
-    setOpenChild(true);
-  };
+  // const handleEditButtonClick = () => {
+  //   setOpenParent(false);
+  // };
 
-  const handleContinueButtonClick = () => {
-    setOpenChild(false);
-    setOpenQRModal(true);
-  };
+  // const handleProceedButtonClick = () => {
+  //   setOpenParent(false);
+  //   setOpenChild(true);
+  // };
 
-  const handleQRFinishButtonClick = () => {
-    setOpenQRModal(false);
-    setOpenFinishModal(true);
-  };
+  // const handleContinueButtonClick = () => {
+  //   setOpenChild(false);
+  //   setOpenQRModal(true);
+  // };
 
-  const handleFinishConfirmation = () => {
-    // Handle finishing the process (e.g., API call)
-    setOpenFinishModal(false);
-  };
+  // const handleQRFinishButtonClick = () => {
+  //   setOpenQRModal(false);
+  //   setOpenFinishModal(true);
+  // };
+
+  // const handleFinishConfirmation = () => {
+  //   // Handle finishing the process (e.g., API call)
+  //   setOpenFinishModal(false);
+  // };
 
   const [eventName, setEventName] = useState('');
   const [venue, setVenue] = useState('');
@@ -86,16 +84,33 @@ const NewEvent = () => {
   const [startTime, setStartTime] = useState(null);
   const [endTime, setEndTime] = useState(null);
 
+  const localAppID = localStorage.getItem('appUserId')
+
   const handleEventDateChange = (date: SetStateAction<null>) => {
     setEventDate(date);
   };
-  
+
   const handleStartTimeChange = (time: SetStateAction<null>) => {
     setStartTime(time);
   };
-  
+
   const handleEndTimeChange = (time: SetStateAction<null>) => {
     setEndTime(time);
+  };
+
+  const handleStartButtonClick = async () => {
+
+    console.log(eventName)
+    console.log(venue)
+    console.log(eventDate)
+    console.log(startTime)
+    console.log(endTime)
+
+    const apiRes = await apiCreateNewEvent(localAppID?.toString() || "" ,
+     {keyEventName:eventName, keyVenue:venue, keyStartTime:startTime, keyEndTime:endTime })
+
+     console.log(apiRes)
+
   };
 
   return (
@@ -116,29 +131,30 @@ const NewEvent = () => {
         </div>
         <div className="inp-container">
           <h4 className="inp-txt">Where did this happen ?</h4>
-          <Autocomplete
-            sx={{
+          <ThemeProvider theme={theme}>
+            <FormControl fullWidth sx={{
               "& .MuiOutlinedInput-root": {
                 "&.Mui-focused fieldset": {
                   borderColor: "rgba(0, 128, 128, 0.7)",
                 },
               },
-              "& .MuiIconButton-root": {
-                color: "rgba(0, 128, 128, 0.7)",
-              },
-            }}
-            disablePortal
-            options={Venue}
-            renderInput={(params) => (
-              <TextField
-                {...params}
+              "& .MuiSelect-icon": {
+                color: "rgba(0, 128, 128, 0.7)", 
+              }
+            }}>
+              <InputLabel>Venue</InputLabel>
+              <Select
                 label="Venue"
-                color="success"
                 value={venue}
                 onChange={(e) => setVenue(e.target.value)}
-              />
-            )}
-          />
+              >
+                <MenuItem value={'U.R Rao Seminar hall'}>U.R Rao Seminar hall</MenuItem>
+                <MenuItem value={'A.P.J Abdul Kalam Seminar Hall'}>A.P.J Abdul Kalam Seminar Hall</MenuItem>
+                <MenuItem value={'Sir M. Visveswaraya Auditorium'}>Sir M. Visveswaraya Auditorium</MenuItem>
+                <MenuItem value={'other'}>Other</MenuItem>
+              </Select>
+            </FormControl>
+          </ThemeProvider>
         </div>
         <div className="inp-container">
           <h4 className="inp-txt">
@@ -184,7 +200,7 @@ const NewEvent = () => {
                 <h4 className="inp-txt">From</h4>
                 <TimePicker
                   sx={{
-                    width: "100%", // Set the width to 100%
+                    width: "100%",
                     "& .MuiOutlinedInput-root": {
                       "&.Mui-focused fieldset": {
                         borderColor: "rgba(0, 128, 128, 0.7)",
@@ -200,7 +216,7 @@ const NewEvent = () => {
                 <h4 className="inp-txt">To</h4>
                 <TimePicker
                   sx={{
-                    width: "100%", // Set the width to 100%
+                    width: "100%",
                     "& .MuiOutlinedInput-root": {
                       "&.Mui-focused fieldset": {
                         borderColor: "rgba(0, 128, 128, 0.7)",
@@ -226,22 +242,22 @@ const NewEvent = () => {
           Start
         </Button>
 
-        <Modal open={openParent} onClose={() => setOpenParent(false)} className="modal">
+        {/* <Modal open={openParent} onClose={() => setOpenParent(false)} className="modal">
           <Box>
             <div className="modal-description">
-              {/* <Typography variant="h6">Entered Details</Typography>
+              <Typography variant="h6">Entered Details</Typography>
               <Typography>Event Name: {eventName}</Typography>
               <Typography>Venue: {venue}</Typography>
               <Typography>Event Date: {eventDate ? eventDate.toString() : ''}</Typography>
               <Typography>Start Time: {startTime}</Typography>
-              <Typography>End Time: {endTime}</Typography> */}
+              <Typography>End Time: {endTime}</Typography>
               <Button onClick={handleEditButtonClick}>Edit</Button>
               <Button onClick={handleProceedButtonClick}>Proceed</Button>
             </div>
           </Box>
-        </Modal>
+        </Modal> */}
 
-        <Modal open={openChild} onClose={() => setOpenChild(false)} className="modal">
+        {/* <Modal open={openChild} onClose={() => setOpenChild(false)} className="modal">
           <Box>
             <div className="modal-description">
 
@@ -249,9 +265,9 @@ const NewEvent = () => {
               <Button onClick={() => setOpenParent(true)} >Cancel</Button>
             </div>
           </Box>
-        </Modal>
+        </Modal> */}
 
-        <Modal open={openQRModal} onClose={() => setOpenQRModal(false)} className="modal">
+        {/* <Modal open={openQRModal} onClose={() => setOpenQRModal(false)} className="modal">
           <Box>
             <div className="modal-description">
               Display QR code
@@ -259,9 +275,9 @@ const NewEvent = () => {
               <Button onClick={() => setOpenChild(true)}>Cancel</Button>
             </div>
           </Box>
-        </Modal>
+        </Modal> */}
 
-        <Modal open={openFinishModal} onClose={() => setOpenFinishModal(false)} className="modal">
+        {/* <Modal open={openFinishModal} onClose={() => setOpenFinishModal(false)} className="modal">
           <Box>
             <div className="modal-description">
               Display finish confirmation
@@ -269,7 +285,7 @@ const NewEvent = () => {
               <Button onClick={() => setOpenQRModal(true)}>Cancel</Button>
             </div>
           </Box>
-        </Modal>
+        </Modal> */}
 
       </div>
       <img src={downimg} alt="downImg" style={downImg} />

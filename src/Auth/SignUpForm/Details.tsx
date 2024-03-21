@@ -1,7 +1,37 @@
 import Button from "@mui/material/Button"
 import TextField from "@mui/material/TextField"
+import { useEffect, useState } from "react"
+import { apiGetUserDetails } from "../../services/BEApis/AuthAPIs";
+import { useNavigate } from "react-router";
 
 const Details = () => {
+
+  const [ name , setName ] = useState();
+  const [ empID , setEmployeeId ] = useState();
+  const [ department , setDepartment ] = useState();
+  const [ Email , setEmail ] = useState();
+  const navigate = useNavigate();
+  
+  const localAppID = localStorage.getItem('appUserId') 
+
+  const fetchUserDetails = async () => {
+    const response = await apiGetUserDetails(localAppID?.toString() || "")
+    setName(await response.data.data.keyUsername)
+    setEmployeeId(await response.data.data.keyEmpId)
+    setDepartment(await response.data.data.keyDepartment)
+    setEmail(await response.data.data.keyEmail)
+    console.log(response)
+  }
+
+  useEffect(() => {
+    fetchUserDetails();
+  });
+
+  const proceedToPin = async () => {
+    navigate('/pincode');
+  }
+
+
   return (
     
     <div className="detail-container">
@@ -11,41 +41,33 @@ const Details = () => {
       <div className="flex flex-col gap-6 detail-card">
         <TextField
           disabled
-          // id="filled-disabled"
-          label="Name"
-          defaultValue="Lecturer Name"
+          label={name}
           variant="filled"
         />
 
         <TextField
           disabled
-          // id="filled-disabled"
-          label="Employee ID"
-          defaultValue="SS0785"
+          label={empID}
           variant="filled"
         />
 
         <TextField
           disabled
-          // id="filled-disabled"
-          label="Department"
-          defaultValue="Computer Science and Engineering"
+          label={department}
           variant="filled"
         />
 
         <TextField
           disabled
-          // id="filled-disabled"
-          label="Email"
-          defaultValue="lecturername@gmail.com"
+          label={Email}
           variant="filled"
         />
 
         <Button
-          // type="submit"
           fullWidth
           variant="contained"
           id="btn"
+          onClick={proceedToPin}
         >
           Proceed
         </Button>

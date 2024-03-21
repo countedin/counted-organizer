@@ -377,7 +377,7 @@ img[alt="downImg"] {        /* Root - Pages - NewEvent - downimg */
 .newEventForm {            /* Root - Pages - NewEvent - newEventForm */
   background-color: #fefefe;
   width: 499px;
-  min-width: 200px;
+  min-width: 299px;
   margin-left: 150px;
   padding: 25px;
   display: flex;
