@@ -20,7 +20,9 @@ import InputLabel from "@mui/material/InputLabel";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import { apiCreateNewEvent } from "../../services/BEApis/EventAPIs";
-// import { apiCreateNewEvent } from "../../services/BEApis/EventAPIs";
+import Modal1 from "./Modal1";
+import Modal2 from "./Modal2";
+// import Modal2 from "./Modal2";
 
 
 const NewEvent = () => {
@@ -98,6 +100,11 @@ const NewEvent = () => {
     setEndTime(time);
   };
 
+  const [modal1, setModal1] = useState(false);
+  const [modal2, setModal2] = useState(false);
+
+
+
   const handleStartButtonClick = async () => {
 
     console.log(eventName)
@@ -106,12 +113,16 @@ const NewEvent = () => {
     console.log(startTime)
     console.log(endTime)
 
-    const apiRes = await apiCreateNewEvent(localAppID?.toString() || "" ,
-     {keyEventName:eventName, keyVenue:venue, keyStartTime:startTime, keyEndTime:endTime })
+    const apiRes = await apiCreateNewEvent(localAppID?.toString() || "",
+      { keyEventName: eventName, keyVenue: venue, keyStartTime: startTime, keyEndTime: endTime, keyCreatedBy: localAppID, keyTags: [], keyAttended: false })
 
-     console.log(apiRes)
+    console.log(apiRes)
 
+    if (apiRes.status == 201) {
+      setModal1(true);
+    }
   };
+
 
   return (
     <div className="newEventWrapper">
@@ -139,7 +150,7 @@ const NewEvent = () => {
                 },
               },
               "& .MuiSelect-icon": {
-                color: "rgba(0, 128, 128, 0.7)", 
+                color: "rgba(0, 128, 128, 0.7)",
               }
             }}>
               <InputLabel>Venue</InputLabel>
@@ -241,6 +252,27 @@ const NewEvent = () => {
         >
           Start
         </Button>
+
+        {modal1 && (
+          <Modal1
+            open={modal1}
+            onClose={() => setModal1(false)}
+            onEditButtonClick={() => setModal1(false)}
+            onProceedButtonClick={() => setModal2(true)}
+          />
+        )}
+
+        {modal2 && (
+          <Modal2
+            open={modal2}
+            onClose={() => setModal2(false)}
+            onContinueButtonClick={() => {
+              setModal2(false);
+              // Handle logic to open QR Modal (if needed)
+            }}
+          />
+        )}
+
 
         {/* <Modal open={openParent} onClose={() => setOpenParent(false)} className="modal">
           <Box>
