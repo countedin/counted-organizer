@@ -1,65 +1,71 @@
-import Modal from "@mui/material/Modal";
-import Box from "@mui/material/Box";
+import Box from "@mui/material/Box"
+import Button from "@mui/material/Button"
+import Modal from "@mui/material/Modal"
 import { useState } from "react";
-import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
+import Modal2 from "./Modal2";
+
 
 interface Modal1Props {
     open: boolean;
     onClose: () => void;
-    onEditButtonClick: () => void;
-    onProceedButtonClick: () => void;
 }
 
-const Modal1: React.FC<Modal1Props> = () => {
+const Modal1: React.FC<Modal1Props> = ({ open, onClose }) => {
 
-    const [openParent, setOpenParent] = useState(false);
+    const [modal2, setModal2] = useState(false);
     const [openChild, setOpenChild] = useState(false);
-    
 
-    const handleEditButtonClick = () => {
-           setOpenParent(false);
-         };
+    const handleEdit = () => {
+        onClose();
+    }
 
-         const handleProceedButtonClick = () => {
-           setOpenParent(false);
-           setOpenChild(true);
-         };
+    const handleProceed = () => {
+        setOpenChild(true);
+    };
 
-         const handleContinueButtonClick = () => {
-           setOpenChild(false);
-         };
-      
+    const handleContinue = () => {
+        setModal2(true);
+    }
+
+    const handleCancel = () => {
+        setOpenChild(false);
+    }
 
     return (
+
         <>
-
-            <Modal open={openParent} onClose={() => setOpenParent(false)} className="modal">
-                <Box>
-                    <div className="modal-description">
-                        <Typography variant="h6">Entered Details</Typography>
-                        <Typography>Event Name: </Typography>
-                        <Typography>Venue: </Typography>
-                        <Typography>Event Date: </Typography>
-                        <Typography>Start Time: </Typography>
-                        <Typography>End Time:</Typography>
-                        <Button onClick={handleEditButtonClick}>Edit</Button>
-                        <Button onClick={handleProceedButtonClick}>Proceed</Button>
-                    </div>
-                </Box>
+            <Modal
+                open={open}
+                onClose={onClose}
+                className="modal">
+                <div className="modal-description">
+                    <Box>
+                        <h2>Event Details</h2>
+                        <Button onClick={handleProceed}>Proceed</Button>
+                        <Button onClick={handleEdit}>Edit</Button>
+                        <Modal
+                            open={openChild}
+                            className="modal"
+                        >
+                            <div className="modal-description">
+                                <Box>
+                                    <h2>Enter 4 digit pin</h2>
+                                    <Button onClick={handleContinue}>Continue</Button>
+                                    <Button onClick={handleCancel}>Cancel</Button>
+                                </Box>
+                            </div>
+                        </Modal>
+                    </Box>
+                </div>
             </Modal>
 
-            <Modal open={openChild} onClose={() => setOpenChild(false)} className="modal">
-                <Box>
-                    <div className="modal-description">
-
-                        <Button onClick={handleContinueButtonClick}>Continue</Button>
-                        <Button onClick={() => setOpenParent(true)} >Cancel</Button>
-                    </div>
-                </Box>
-            </Modal>
-
-
+            {
+                modal2 && (
+                    <Modal2
+                        open={modal2}
+                        onClose={onClose} />
+                )
+            }
         </>
 
     )

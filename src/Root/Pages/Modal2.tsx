@@ -1,51 +1,57 @@
-import Modal from "@mui/material/Modal";
-import Box from "@mui/material/Box";
+import Box from "@mui/material/Box"
+import Button from "@mui/material/Button"
+import Modal from "@mui/material/Modal"
 import { useState } from "react";
-import Button from "@mui/material/Button";
+
 
 interface Modal2Props {
     open: boolean;
-    onClose: () => void;
-    onContinueButtonClick: () => void;
+    onClose: () => void; 
 }
-  
 
-const Modal2: React.FC<Modal2Props> = () => {
+const Modal2: React.FC<Modal2Props> = ( {open, onClose} ) => {
 
-    const [openQRModal, setOpenQRModal] = useState(false);
-    const [openFinishModal, setOpenFinishModal] = useState(false);
+    const [openChild, setOpenChild] = useState(false);
 
-    const handleQRFinishButtonClick = () => {
-        setOpenQRModal(false);
-        setOpenFinishModal(true);
+    const handleFinish = () => {
+        setOpenChild(true);
     };
-    const handleFinishConfirmation = () => {
-        // Handle finishing the process (e.g., API call)
-        setOpenFinishModal(false);
-    };
+
+    const handleContinue = () =>{
+        onClose();
+    }
+
+    const handleCancel = () => {
+        setOpenChild(false);
+    }
 
     return (
-        <>
-            <Modal open={openQRModal} onClose={() => setOpenQRModal(false)} className="modal">
-                <Box>
-                    <div className="modal-description">
-                        Display QR code
-                        <Button onClick={handleQRFinishButtonClick}>Finish</Button>
-                        {/* <Button onClick={() => setOpenChild(true)}>Cancel</Button> */}
-                    </div>
-                </Box>
-            </Modal>
 
-            <Modal open={openFinishModal} onClose={() => setOpenFinishModal(false)} className="modal">
+        <Modal 
+            open={open} 
+            onClose={onClose}
+            className="modal">
+            <div className="modal-description">
                 <Box>
-                    <div className="modal-description">
-                        Display finish confirmation
-                        <Button onClick={handleFinishConfirmation}>Continue</Button>
-                        <Button onClick={() => setOpenQRModal(true)}>Cancel</Button>
-                    </div>
+                    <h2>QR scanner</h2>
+                    <Button onClick={handleFinish}>Finish</Button>
+                    <Modal
+                        open={openChild}
+                        className="modal"
+                    >
+                        <div className="modal-description">
+                            <Box>
+                                <h2>Its all set </h2>
+                                <Button onClick={handleContinue}>Continue</Button>
+                                <Button onClick={handleCancel}>Cancel</Button>
+                            </Box>
+                        </div>
+                    </Modal>
                 </Box>
-            </Modal>
-        </>
+            </div>
+
+        </Modal>
+
     )
 }
 
