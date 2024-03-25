@@ -4,15 +4,16 @@ import { useEffect, useState } from "react"
 import { apiGetUserDetails } from "../../services/BEApis/AuthAPIs";
 import { useNavigate } from "react-router";
 
+
 const Details = () => {
 
-  const [ name , setName ] = useState();
-  const [ empID , setEmployeeId ] = useState();
-  const [ department , setDepartment ] = useState();
-  const [ Email , setEmail ] = useState();
+  const [name, setName] = useState();
+  const [empID, setEmployeeId] = useState();
+  const [department, setDepartment] = useState();
+  const [Email, setEmail] = useState();
   const navigate = useNavigate();
-  
-  const localAppID = localStorage.getItem('appUserId') 
+
+  const localAppID = localStorage.getItem('appUserId')
 
   const fetchUserDetails = async () => {
     const response = await apiGetUserDetails(localAppID?.toString() || "")
@@ -33,33 +34,38 @@ const Details = () => {
 
 
   return (
-    
+
     <div className="detail-container">
       <h3 id="details-txt1">Check your details</h3>
       <h4 id="details-txt2">We know you</h4>
-  
-      <div className="flex flex-col gap-6 detail-card">
+
+      <div className="flex flex-col gap-7 detail-card">
+
         <TextField
           disabled
-          label={name}
+          label="Name"
+          value={name}
           variant="filled"
         />
 
         <TextField
           disabled
-          label={empID}
+          label="Employee ID"
+          value={empID}
           variant="filled"
         />
 
         <TextField
           disabled
-          label={department}
+          label="Department"
+          value={department}
           variant="filled"
         />
 
         <TextField
           disabled
-          label={Email}
+          label="Email"
+          value={Email}
           variant="filled"
         />
 
@@ -71,12 +77,12 @@ const Details = () => {
         >
           Proceed
         </Button>
-        
+
       </div>
-      
+
       <h5 className="txt-3">*Details in this page are not editable. Please write us to <a href="mailto:countedin.app@gmail.com" id="link">countedin.app@gmail.com</a>  if incorrect details are displayed.</h5>
     </div>
-    
+
 
   )
 }
