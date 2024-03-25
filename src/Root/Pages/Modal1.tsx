@@ -3,7 +3,7 @@ import Button from "@mui/material/Button"
 import Modal from "@mui/material/Modal"
 import { useState } from "react";
 import Modal2 from "./Modal2";
-import Typography from "@mui/material/Typography";
+// import Typography from "@mui/material/Typography";
 
 
 interface Modal1Props {
@@ -42,7 +42,22 @@ const Modal1: React.FC<Modal1Props> = ({ open, onClose }) => {
                 <div className="modal-description">
                     <Box>
                         <h2>Details Preview</h2>
-                        <Typography>Event Name: </Typography>
+                        <div className="modal-content">
+                            <h4 className="titletxt">Event Name</h4>
+                            <p>Definition of txt</p>
+                        </div>
+                        <div className="modal-content">
+                            <h4 className="titletxt">Venue</h4>
+                            <p>Definition of txt</p>
+                        </div>
+                        <div className="modal-content">
+                            <h4 className="titletxt">Scheduled Date</h4>
+                            <p>Definition of txt</p>
+                        </div>
+                        <div className="modal-content">
+                            <h4 className="titletxt">Scheduled Time</h4>
+                            <p>Definition of txt</p>
+                        </div>
                         <Button onClick={handleProceed}>Proceed</Button>
                         <Button onClick={handleEdit}>Edit</Button>
                         <Modal
