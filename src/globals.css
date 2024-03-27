@@ -411,6 +411,85 @@ img[alt="downImg"] {        /* Root - Pages - NewEvent - downimg */
   height: 40px;
 }
 
+.outlet{               /* Root - Pages - Modal1 - outlet */     
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+  gap: 15px;
+  width: auto;
+}
+
+.h1txt{             /* Root - Pages - Modal1 - h1txt */ 
+  display: flex;
+  font-family: "Poppins",sans-serif;
+  font-size: medium;
+  font-weight: 500;
+  color: rgba(51, 51, 102, 1);
+  justify-content: center;
+  align-items: center;
+}
+
+.Buttons{              /* Root - Pages - Modal1 - Buttons */
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin: 10px;
+  color: teal;
+}
+
+.description{          /* Root - Pages - Modal1 - description */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: auto;
+}
+
+.description,h2,Typography{       /* Root - Pages - Modal1 - description */
+  margin-top: 0px;
+}
+
+.titletxt{                /* Root - Pages - Modal1 - titletxt */
+  font-family: "Poppins",sans-serif;
+  font-size: small;
+  font-weight: 300;
+  color: rgba(51, 51, 102, 1);
+}
+
+.pin-input-container {
+  /* border: 1px solid; */
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 15px;
+}
+
+.pin-dashes {
+  /* border: 1px solid; */
+  display: flex;
+  gap: 25px;
+  margin-bottom: 15px;
+}
+
+.dash {
+  width: auto;
+  margin-bottom: 15px;
+  padding: 15px;
+  border-bottom: 1.5px solid black;
+  display: flex;
+  /* align-items: center; */
+}
+
+.pin-input {
+  width: 0;
+  opacity: 0;
+  position: absolute;
+}
+
+.error-message {
+  color: red;
+  margin-top: 5px;
+}
+
 .screen-width {
   width: 100vw;
   height: 100vh;
