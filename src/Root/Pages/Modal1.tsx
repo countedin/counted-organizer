@@ -55,6 +55,7 @@ const Modal1: React.FC<Modal1Props> = ({ open, onClose }) => {
         setOpenChild(false);
     }
 
+
     return (
 
         <>
