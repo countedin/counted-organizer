@@ -33,7 +33,18 @@ const Modal2: React.FC<Modal2Props> = ( {open, onClose} ) => {
             className="modal">
             <div className="modal-description">
                 <Box>
-                    <h2>QR scanner</h2>
+                    <div className="colWrapper">
+                        <div className="col1">
+                            <div className="qrWrapper">
+
+                            </div>
+                        </div>
+                        <div className="col2">
+                            <div className="content-wrapper">
+                                
+                            </div>
+                        </div>
+                    </div>
                     <Button onClick={handleFinish}>Finish</Button>
                     <Modal
                         open={openChild}

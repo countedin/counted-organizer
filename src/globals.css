@@ -459,6 +459,7 @@ img[alt="downImg"] {        /* Root - Pages - NewEvent - downimg */
   /* border: 1px solid; */
   display: flex;
   align-items: center;
+  flex-direction: column;
   justify-content: space-around;
   padding: 15px;
 }
@@ -487,7 +488,7 @@ img[alt="downImg"] {        /* Root - Pages - NewEvent - downimg */
 
 .error-message {
   color: red;
-  margin-top: 5px;
+  
 }
 
 .screen-width {

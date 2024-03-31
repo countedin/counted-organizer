@@ -1,10 +1,11 @@
 import Box from "@mui/material/Box"
 import Button from "@mui/material/Button"
 import Modal from "@mui/material/Modal"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Modal2 from "./Modal2";
 import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
+
 
 
 interface Modal1Props {
@@ -27,7 +28,17 @@ const Modal1: React.FC<Modal1Props> = ({ open, onClose }) => {
 
     const [pin, setPin] = useState('');
     const [isValid, setIsValid] = useState(true);
+    
 
+    useEffect(() => {
+        if (openChild) {
+            // Focus on the PIN input field when the child modal opens
+            const pinInput = document.getElementById("pin-input") as HTMLInputElement;
+            if (pinInput) {
+                pinInput.focus();
+            }
+        }
+    }, [openChild]);
 
     const handlePinChange = (event: { target: { value: string; }; }) => {
         const input = event.target.value.replace(/\D/g, ''); // Remove non-digit characters
@@ -45,7 +56,6 @@ const Modal1: React.FC<Modal1Props> = ({ open, onClose }) => {
                 alert('Enter correct pin');
             }
         }
-
     }
 
 

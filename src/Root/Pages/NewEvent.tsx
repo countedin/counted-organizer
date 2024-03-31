@@ -15,7 +15,7 @@ import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
-// import { apiCreateNewEvent } from "../../services/BEApis/EventAPIs";
+import { apiCreateNewEvent } from "../../services/BEApis/EventAPIs";
 import Modal1 from "./Modal1";
 
 const NewEvent = () => {
@@ -63,24 +63,24 @@ const NewEvent = () => {
     setEndTime(time);
   };
 
-  const [ modal1 , setModal1 ] = useState(false);
+  const [modal1, setModal1] = useState(false);
+  const localAppID = localStorage.getItem('appUserId');
 
   const handleStartButtonClick = async () => {
-    
+
     setModal1(true);
+    console.log(Name)
+    console.log(venue)
+    console.log(eventDate)
+    console.log(startTime)
+    console.log(endTime)
 
+    const apiRes = await apiCreateNewEvent(localAppID?.toString() || "",
+      { keyEventName: Name, keyVenue: venue, keyStartTime: startTime, keyEndTime: endTime, keyCreatedBy: localAppID, keyTags: [], keyAttended: false })
 
-    // console.log(Name)
-    // console.log(venue)
-    // console.log(eventDate)
-    // console.log(startTime)
-    // console.log(endTime)
-
-    // const apiRes = await apiCreateNewEvent(localAppID?.toString() || "",
-    //   { keyEventName: Name, keyVenue: venue, keyStartTime: startTime, keyEndTime: endTime, keyCreatedBy: localAppID, keyTags: [], keyAttended: false })
-
-    // console.log(apiRes);
+    console.log(apiRes);
   };
+
 
   return (
 
@@ -212,7 +212,7 @@ const NewEvent = () => {
           Start
         </Button>
 
-        { modal1 && (
+        {modal1 && (
           <Modal1 open={modal1} onClose={() => setModal1(false)} />
         )}
 
