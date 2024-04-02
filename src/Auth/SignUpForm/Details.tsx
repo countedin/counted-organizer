@@ -32,6 +32,12 @@ const Details = () => {
     navigate('/pincode');
   }
 
+  const styles = {
+    textField: {
+      marginBottom: '10px', 
+    },
+  };
+
 
   return (
 
@@ -46,6 +52,14 @@ const Details = () => {
           label="Name"
           value={name}
           variant="filled"
+          InputProps={{
+            style: {
+              backgroundColor: '#f5f5f5',
+              borderBottom: '2px solid darkgrey', // Apply custom underline style
+            },
+            disableUnderline: true, // Disable default underline
+          }}
+          style={styles.textField}
         />
 
         <TextField
@@ -53,6 +67,14 @@ const Details = () => {
           label="Employee ID"
           value={empID}
           variant="filled"
+          InputProps={{
+            style: {
+              backgroundColor: '#f5f5f5',
+              borderBottom: '2px solid darkgrey', // Apply custom underline style
+            },
+            disableUnderline: true, // Disable default underline
+          }}
+          style={styles.textField}
         />
 
         <TextField
@@ -60,6 +82,14 @@ const Details = () => {
           label="Department"
           value={department}
           variant="filled"
+          InputProps={{
+            style: {
+              backgroundColor: '#f5f5f5',
+              borderBottom: '2px solid darkgrey', // Apply custom underline style
+            },
+            disableUnderline: true, // Disable default underline
+          }}
+          
         />
 
         <TextField
@@ -67,6 +97,14 @@ const Details = () => {
           label="Email"
           value={Email}
           variant="filled"
+          InputProps={{
+            style: {
+              backgroundColor: '#f5f5f5',
+              borderBottom: '2px solid darkgrey', // Apply custom underline style
+            },
+            disableUnderline: true, // Disable default underline
+          }}
+          style={styles.textField}
         />
 
         <Button
@@ -74,6 +112,7 @@ const Details = () => {
           variant="contained"
           id="btn"
           onClick={proceedToPin}
+          style={{ textTransform: 'none', fontWeight: '600', fontSize: '15px', fontFamily: 'Poppins' }}
         >
           Proceed
         </Button>

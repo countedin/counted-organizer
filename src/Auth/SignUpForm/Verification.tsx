@@ -13,11 +13,11 @@ const Verification = () => {
   const localEmail = localStorage.getItem('regEmail');
   const navigate = useNavigate();
 
-  const callVerifyCode = async() => {
+  const callVerifyCode = async () => {
     console.log(verifyCode)
     console.log(localEmail)
 
-    const apiRes = await apiVerifyCode({ipEmail : localEmail ,ipCode : verifyCode})
+    const apiRes = await apiVerifyCode({ ipEmail: localEmail, ipCode: verifyCode })
     console.log(apiRes)
 
     localStorage.setItem("appUserId", apiRes.data.appUserId)
@@ -28,30 +28,31 @@ const Verification = () => {
   }
 
   return (
-      <div className="signup-form">
+    <div className="signup-form">
+      <div className="signtxt">
         <h3 id="verification-txt1">Enter the Verification Code</h3>
         <h4 id="verification-txt2">We've sent a 6 digit code to your mail</h4>
-        <div >
-          <TextField
-            variant="outlined"
-            color="success"
-            margin="normal"
-            fullWidth
-            type="text"
-            label="Verification Code" 
-            value={verifyCode}
-            onChange={(e) => {setVerificationCode(e.target.value)}}
-          />
-          <Button
-            fullWidth
-            variant="contained"
-            id="btn"
-            onClick={callVerifyCode}
-          >
-            Register
-          </Button>
-        </div>
       </div>
+        <TextField
+          variant="outlined"
+          color="success"
+          margin="normal"
+          fullWidth
+          type="text"
+          label="Verification Code"
+          value={verifyCode}
+          onChange={(e) => { setVerificationCode(e.target.value) }}
+        />
+        <Button
+          fullWidth
+          variant="contained"
+          id="btn"
+          onClick={callVerifyCode}
+          style={{ textTransform: 'none', fontWeight: '600', fontSize: '15px', fontFamily: 'Poppins' }}
+        >
+          Register
+        </Button>
+    </div>
   )
 }
 

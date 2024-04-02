@@ -7,7 +7,7 @@ const SignInLayout = () => {
     <>
       
         <div className="authWrapper">
-          <div className="left-container">
+          <div className="left-Container">
             <img src={Signin} alt="signin" id="signin-img" />
           </div>
 

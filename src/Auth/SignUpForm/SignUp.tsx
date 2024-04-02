@@ -27,10 +27,14 @@ const SignUp = () => {
   return (
 
     <div className="signup-form">
-      <h3 id="signup-txt1">Let's create your account</h3>
-      <h4 id="signup-txt2">Enter the details as per the records</h4>
+
+      <div className="signuptxt">
+        <h3 id="signup-txt1">Let's create your account</h3>
+        <h4 id="signup-txt2">Enter the details as per the records</h4>
+      </div>
 
       <TextField
+        className='TextField'
         variant="outlined"
         color="success"
         margin="normal"
@@ -53,6 +57,7 @@ const SignUp = () => {
         variant="contained"
         id="btn"
         onClick={callRegister}
+        style={{ textTransform: 'none', fontWeight: '600' , fontSize: '15px', fontFamily: 'Poppins'}}
       >
         Register
       </Button>
