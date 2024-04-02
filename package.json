@@ -15,6 +15,7 @@
     "@mui/base": "^5.0.0-beta.37",
     "@mui/icons-material": "^5.15.11",
     "@mui/material": "^5.15.11",
+    "@mui/styles": "^5.15.14",
     "@mui/x-data-grid": "^6.19.6",
     "@mui/x-data-grid-generator": "^6.19.6",
     "@mui/x-date-pickers": "^6.19.5",
