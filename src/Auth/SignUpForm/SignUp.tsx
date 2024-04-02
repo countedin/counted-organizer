@@ -3,6 +3,27 @@ import TextField from '@mui/material/TextField';
 import { useState } from 'react';
 import { apiRegNewUser } from '../../services/BEApis/AuthAPIs';
 import { useNavigate } from 'react-router';
+import { styled } from '@mui/material/styles';
+
+const CssTextField = styled(TextField)({
+  '& label.Mui-focused': {
+    color: 'rgba(0, 200, 166, 1)',
+  },
+  '& .MuiInput-underline:after': {
+    borderBottomColor: '#B2BAC2',
+  },
+  '& .MuiOutlinedInput-root': {
+    '& fieldset': {
+      borderColor: '#E0E3E7',
+    },
+    '&:hover fieldset': {
+      borderColor: '#B2BAC2',
+    },
+    '&.Mui-focused fieldset': {
+      borderColor: 'rgba(0, 200, 166, 1)',
+    },
+  },
+});
 
 const SignUp = () => {
 
@@ -33,7 +54,7 @@ const SignUp = () => {
         <h4 id="signup-txt2">Enter the details as per the records</h4>
       </div>
 
-      <TextField
+      <CssTextField
         className='TextField'
         variant="outlined"
         color="success"
@@ -46,7 +67,7 @@ const SignUp = () => {
         }}
       />
 
-      <TextField
+      <CssTextField
         variant="outlined"
         color="success"
         label="Employee ID"

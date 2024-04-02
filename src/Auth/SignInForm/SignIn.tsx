@@ -3,19 +3,40 @@ import TextField from '@mui/material/TextField'
 import { useState } from 'react'
 import { apiRegExistingUser } from '../../services/BEApis/AuthAPIs';
 import { useNavigate } from 'react-router';
+import { styled } from '@mui/material/styles';
+
+const CssTextField = styled(TextField)({
+  '& label.Mui-focused': {
+    color: 'rgba(0, 200, 166, 1)',
+  },
+  '& .MuiInput-underline:after': {
+    borderBottomColor: '#B2BAC2',
+  },
+  '& .MuiOutlinedInput-root': {
+    '& fieldset': {
+      borderColor: '#E0E3E7',
+    },
+    '&:hover fieldset': {
+      borderColor: '#B2BAC2',
+    },
+    '&.Mui-focused fieldset': {
+      borderColor: 'rgba(0, 200, 166, 1)',
+    },
+  },
+});
 
 
 const SignIn = () => {
 
   const [signinEmail, setSigninEmail] = useState('');
   const navigate = useNavigate();
-  
+
   const callLogin = async () => {
     if (signinEmail.endsWith('@nmit.ac.in')) {
       console.log(signinEmail);
-      
+
       const apiRes = await apiRegExistingUser({ ipEmail: signinEmail })
-      if(apiRes.status == 200){
+      if (apiRes.status == 200) {
         navigate('/home')
       }
       console.log(apiRes)
@@ -26,31 +47,31 @@ const SignIn = () => {
 
 
   return (
+    <>
+      <div className="signin-form">
+        <div className="signtxt">
+          <h3 id="verification-txt1">Welcome back,</h3>
+          <h4 id="verification-txt2">Enter below details to login</h4>
+        </div>
+        
+        <CssTextField
+          variant="outlined"
+          color="success"
+          margin="normal"
+          label="Email ID"
+          onChange={(e) => setSigninEmail(e.target.value)}
+        />
 
-    <div className="signin-form">
+        <Button
+          variant="contained"
+          id="btn"
+          onClick={callLogin}
+        >
+          Login
+        </Button>
 
-      <h3 id="signup-txt1">Welcome back,</h3>
-      <h4 id="signup-txt2">Enter below details to login</h4>
-
-      <TextField
-        variant="outlined"
-        color="success"
-        margin="normal"
-        label="Email ID"
-        onChange={(e) => setSigninEmail(e.target.value)}
-      />
-
-      <Button
-        variant="contained"
-        id="btn"
-        onClick={callLogin}
-      >
-        Login
-      </Button>
-
-    </div>
-
-
+      </div>
+    </>
 
   )
 }

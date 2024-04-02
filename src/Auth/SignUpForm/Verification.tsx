@@ -3,7 +3,27 @@ import TextField from "@mui/material/TextField"
 import { useState } from "react";
 import { apiVerifyCode } from "../../services/BEApis/AuthAPIs";
 import { useNavigate } from "react-router";
-// import { locale } from "dayjs";
+import { styled } from '@mui/material/styles';
+
+const CssTextField = styled(TextField)({
+  '& label.Mui-focused': {
+    color: 'rgba(0, 200, 166, 1)',
+  },
+  '& .MuiInput-underline:after': {
+    borderBottomColor: '#B2BAC2',
+  },
+  '& .MuiOutlinedInput-root': {
+    '& fieldset': {
+      borderColor: '#E0E3E7',
+    },
+    '&:hover fieldset': {
+      borderColor: '#B2BAC2',
+    },
+    '&.Mui-focused fieldset': {
+      borderColor: 'rgba(0, 200, 166, 1)',
+    },
+  },
+});
 
 
 
@@ -33,7 +53,7 @@ const Verification = () => {
         <h3 id="verification-txt1">Enter the Verification Code</h3>
         <h4 id="verification-txt2">We've sent a 6 digit code to your mail</h4>
       </div>
-        <TextField
+        <CssTextField
           variant="outlined"
           color="success"
           margin="normal"

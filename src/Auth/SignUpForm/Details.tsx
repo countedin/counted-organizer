@@ -55,9 +55,9 @@ const Details = () => {
           InputProps={{
             style: {
               backgroundColor: '#f5f5f5',
-              borderBottom: '2px solid darkgrey', // Apply custom underline style
+              borderBottom: '2px solid darkgrey', 
             },
-            disableUnderline: true, // Disable default underline
+            disableUnderline: true, 
           }}
           style={styles.textField}
         />
@@ -70,9 +70,9 @@ const Details = () => {
           InputProps={{
             style: {
               backgroundColor: '#f5f5f5',
-              borderBottom: '2px solid darkgrey', // Apply custom underline style
+              borderBottom: '2px solid darkgrey', 
             },
-            disableUnderline: true, // Disable default underline
+            disableUnderline: true, 
           }}
           style={styles.textField}
         />
@@ -85,9 +85,9 @@ const Details = () => {
           InputProps={{
             style: {
               backgroundColor: '#f5f5f5',
-              borderBottom: '2px solid darkgrey', // Apply custom underline style
+              borderBottom: '2px solid darkgrey', 
             },
-            disableUnderline: true, // Disable default underline
+            disableUnderline: true, 
           }}
           
         />
@@ -100,9 +100,9 @@ const Details = () => {
           InputProps={{
             style: {
               backgroundColor: '#f5f5f5',
-              borderBottom: '2px solid darkgrey', // Apply custom underline style
+              borderBottom: '2px solid darkgrey', 
             },
-            disableUnderline: true, // Disable default underline
+            disableUnderline: true, 
           }}
           style={styles.textField}
         />

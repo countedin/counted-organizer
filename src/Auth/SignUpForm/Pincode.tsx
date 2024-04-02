@@ -1,19 +1,26 @@
 import Button from "@mui/material/Button"
 import TextField from "@mui/material/TextField"
-import { useState } from "react"
+import { SetStateAction, useState } from "react"
 import { apiSetupPin } from "../../services/BEApis/AuthAPIs"
 import { useNavigate } from "react-router"
-import { makeStyles } from '@mui/styles';
+import { styled } from '@mui/material/styles';
 
-const useStyles = makeStyles({
-  root: {
-    '& .MuiOutlinedInput-root': {
-      '&:hover': {
-        borderColor: 'rgba(0, 0, 0, 0.87)', // Color on hover
-      },
+const CssTextField = styled(TextField)({
+  '& label.Mui-focused': {
+    color: 'rgba(0, 200, 166, 1)',
+  },
+  '& .MuiInput-underline:after': {
+    borderBottomColor: '#B2BAC2',
+  },
+  '& .MuiOutlinedInput-root': {
+    '& fieldset': {
+      borderColor: '#E0E3E7',
     },
-    '& .Mui-focused .MuiOutlinedInput-notchedOutline': {
-      borderColor: 'rgba(255, 0, 0, 1)', // Custom color when focused
+    '&:hover fieldset': {
+      borderColor: '#B2BAC2',
+    },
+    '&.Mui-focused fieldset': {
+      borderColor: 'rgba(0, 200, 166, 1)',
     },
   },
 });
@@ -38,29 +45,24 @@ const Pincode = () => {
       alert('please enter the correct pin')
     }
   }
-
-  const classes = useStyles( );
-
   
   return (
     
     <div className="pincode-form">
       <div className="signtxt">
-        <h3 id="signup-txt1">Setup 4 digit PIN</h3>
-        <h4 id="signup-txt2">We ask you each time when you are creating an event</h4>
+        <h3 id="pincode-txt1">Setup 4 digit PIN</h3>
+        <h4 id="pincode-txt2">We ask you each time when you are creating an event</h4>
       </div>
-      <TextField
+      <CssTextField
         variant="outlined"
         margin="normal"
         type="password"
         label="Enter 4 digit PIN"
         value={enterPin}
-        onChange={(e) => { setEnterPin(e.target.value) }}
-        className={classes.root}
+        onChange={(e: { target: { value: SetStateAction<string> } }) => { setEnterPin(e.target.value) }}
       />
-      <TextField
+      <CssTextField
         variant="outlined"
-        // className={classes.root}
         margin="normal"
         type="password"
         label="Re-enter PIN"

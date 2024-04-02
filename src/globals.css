@@ -81,7 +81,7 @@ body {
   max-height: 400px;
 }
 
-.signuptxt{
+.signuptxt{          /* Auth - SignUpForm - SignUp - signuptxt */
   margin-bottom: -25px;
 }
 
@@ -191,6 +191,31 @@ body {
   margin: 0, auto;
 }
 
+#pincode-txt1 {                      /* Auth - SignUpForm - Pincode - pincode-txt1 */
+  font-family: "Poppins", sans-serif;
+  margin-bottom: -20px;
+  font-size: 30px;
+  font-weight: 600;
+  color: rgba(51, 51, 102, 1);
+  max-width: 100;
+  max-width: 100%;
+  text-align: start;
+  flex: 1,1,auto;
+}
+
+#pincode-txt2 {                    /* Auth - SignUpForm - Pincode - pincode-txt2 */
+  font-family: "Poppins", sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  color: rgba(51, 51, 102, 0.7);
+  text-align: start;
+  flex: 1,1,auto;
+}
+
 #signin-img {           /* Auth - SignInLayout - signin-img */      
   display: flex;
   max-width: 80%;
@@ -199,11 +224,15 @@ body {
 }
 
 .signin-form {            /* Auth - SignInLayout - signin-form */
-  position: absolute;         
   display: flex;
   flex-direction: column;
-  gap: 15px;
-  margin-right: 25px;
+  justify-content: center;
+  position: relative;
+  gap: 20px;
+  width: 65%;
+  height: 69%;
+  max-width: 580px; 
+  max-height: 400px;
 }
 
 .navbar {                /* Root - Pages - HomeTab - navbar */
