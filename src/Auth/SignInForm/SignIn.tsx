@@ -66,6 +66,7 @@ const SignIn = () => {
           variant="contained"
           id="btn"
           onClick={callLogin}
+          style={{ textTransform: 'none', fontWeight: '600', fontSize: '15px', fontFamily: 'Poppins' }}
         >
           Login
         </Button>

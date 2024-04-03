@@ -167,6 +167,7 @@ body {
   row-gap: 15px;
   width: 100%;
   margin-top: 0px;
+  border: 1px solid;
 }
 
 .txt-3 {                  /* Auth - SignUpFrom - Details - txt-3 */
@@ -237,17 +238,18 @@ body {
 
 .navbar {                /* Root - Pages - HomeTab - navbar */
   background-color: rgba(61, 48, 162, 1);
-  height: 60px;
+  height: 75px;
   color: white;
-  position: sticky !important;
+  position: sticky;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex: 1,1,auto;
 }
 
 .logo {                 /* Root - Pages - HomeTab - logo */      
-  padding: 5px;
-  margin: 10px;
+  padding: 10px;
+  margin: 25px;
 }
 
 .nav-content {          /* Root - Pages - HomeTab - nav-content */   
@@ -255,6 +257,7 @@ body {
   align-items: center;
   justify-content: center;
   flex-direction: row;
+  gap: 20px;
 }
 
 #nav-item {             /* Root - Pages - HomeTab - nav-item */
@@ -262,7 +265,7 @@ body {
   text-decoration: none;
   font-family: "Poppins", sans-serif;
   cursor: pointer;
-  margin-right: 25px;
+  margin-right: 35px;
 }
 
 #nav-item:hover {         /* Root - Pages - HomeTab - nav-item */
@@ -273,7 +276,20 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  position: fixed;
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modalProfile {                /* Root - Pages - TopBar - modalProfile */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
   z-index: 1;
   left: 0;
   top: 0;
@@ -284,8 +300,14 @@ body {
 
 .modal-description {          /* Root - Pages - TopBar - modal-content */
   background-color: #fefefe;
-  padding: 20px;
-  border-radius: 5px;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.profile-description {          /* Root - Pages - TopBar - profile-description */
+  background-color: #fefefe;
+  /* padding: 15px; */
+  border-radius: 10px;
 }
 
 .close {                /* Root - Pages - TopBar - modal-close */
@@ -340,6 +362,14 @@ body {
 }
 
 .profile-txt {            /* Root - Pages - TopBar - modal - profile-txt */
+  color: rgba(179, 38, 30, 1);
+  font-weight: 600;
+  flex: 1,1,auto;
+  width: 90%;
+}
+
+.icon-container {          /* Root - Pages - TopBar - modal - icon-container */
+  display: flex;
   color: rgba(179, 38, 30, 1);
 }
 
