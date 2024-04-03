@@ -23,6 +23,7 @@ function App() {
 
         {/**Public Routes */}
         <Route element={<SignUpLayout />}>
+          <Route path="/" element={<SignUp />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/verification" element={<Verification />} />
           <Route path="/details" element={<Details />} />
