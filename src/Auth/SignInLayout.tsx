@@ -1,4 +1,4 @@
-import Signin from "../assets/Images/SignIn.png"
+import Signin from "../assets/Images/Signin.png"
 import frame from '../assets/Images/Frame.png'
 import SignIn from "./SignInForm/SignIn"
 
@@ -7,7 +7,7 @@ const SignInLayout = () => {
     <>
       
         <div className="authWrapper">
-          <div className="left-container">
+          <div className="left-Container">
             <img src={Signin} alt="signin" id="signin-img" />
           </div>
 

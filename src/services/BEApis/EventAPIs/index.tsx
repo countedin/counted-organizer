@@ -6,3 +6,9 @@ export const apiCreateNewEvent = ( appUserId:string, data: any) => {
     console.log("API RES", response)
     return response;
 }
+
+export const apiGetEventDetails = ( keyAppEventId : string ) => {
+    const response = apiInstance.get(`event/get-event=${keyAppEventId}`);
+    console.log("API RES" , response);
+    return response;
+}

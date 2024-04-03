@@ -3,7 +3,6 @@ import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-// import Autocomplete from "@mui/material/Autocomplete";
 import { TimePicker } from "@mui/x-date-pickers/TimePicker";
 import leftimg from "../../assets/Images/LeftImage.png"
 import downimg from "../../assets/Images/DownImage.png"
@@ -12,16 +11,12 @@ import Typography from "@mui/material/Typography";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import Button from '@mui/material/Button';
 import { SetStateAction, useState } from "react";
-// import dayjs from "dayjs";
-// import Modal from "@mui/material/Modal";
-// import Box from "@mui/material/Box";
 import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import { apiCreateNewEvent } from "../../services/BEApis/EventAPIs";
-// import { apiCreateNewEvent } from "../../services/BEApis/EventAPIs";
-
+import Modal1 from "./Modal1";
 
 const NewEvent = () => {
 
@@ -47,44 +42,14 @@ const NewEvent = () => {
     },
   });
 
-  // const [openParent, setOpenParent] = useState(false);
-  // const [openChild, setOpenChild] = useState(false);
-  // const [openQRModal, setOpenQRModal] = useState(false);
-  // const [openFinishModal, setOpenFinishModal] = useState(false);
-
-
-
-  // const handleEditButtonClick = () => {
-  //   setOpenParent(false);
-  // };
-
-  // const handleProceedButtonClick = () => {
-  //   setOpenParent(false);
-  //   setOpenChild(true);
-  // };
-
-  // const handleContinueButtonClick = () => {
-  //   setOpenChild(false);
-  //   setOpenQRModal(true);
-  // };
-
-  // const handleQRFinishButtonClick = () => {
-  //   setOpenQRModal(false);
-  //   setOpenFinishModal(true);
-  // };
-
-  // const handleFinishConfirmation = () => {
-  //   // Handle finishing the process (e.g., API call)
-  //   setOpenFinishModal(false);
-  // };
-
-  const [eventName, setEventName] = useState('');
+  const [Name, setEventName] = useState('');
   const [venue, setVenue] = useState('');
   const [eventDate, setEventDate] = useState(null);
   const [startTime, setStartTime] = useState(null);
   const [endTime, setEndTime] = useState(null);
 
-  const localAppID = localStorage.getItem('appUserId')
+
+  // const localAppID = localStorage.getItem('appUserId')
 
   const handleEventDateChange = (date: SetStateAction<null>) => {
     setEventDate(date);
@@ -98,22 +63,27 @@ const NewEvent = () => {
     setEndTime(time);
   };
 
+  const [modal1, setModal1] = useState(false);
+  const localAppID = localStorage.getItem('appUserId');
+
   const handleStartButtonClick = async () => {
 
-    console.log(eventName)
+    setModal1(true);
+    console.log(Name)
     console.log(venue)
     console.log(eventDate)
     console.log(startTime)
     console.log(endTime)
 
-    const apiRes = await apiCreateNewEvent(localAppID?.toString() || "" ,
-     {keyEventName:eventName, keyVenue:venue, keyStartTime:startTime, keyEndTime:endTime })
+    const apiRes = await apiCreateNewEvent(localAppID?.toString() || "",
+      { keyEventName: Name, keyVenue: venue, keyStartTime: startTime, keyEndTime: endTime, keyCreatedBy: localAppID, keyTags: [], keyAttended: false })
 
-     console.log(apiRes)
-
+    console.log(apiRes);
   };
 
+
   return (
+
     <div className="newEventWrapper">
       <img src={leftimg} alt="leftImage" style={leftImg} />
       <div className="newEventForm">
@@ -125,7 +95,7 @@ const NewEvent = () => {
             label="Event name"
             variant="outlined"
             color="success"
-            value={eventName}
+            value={Name}
             onChange={(e) => setEventName(e.target.value)}
           />
         </div>
@@ -139,7 +109,7 @@ const NewEvent = () => {
                 },
               },
               "& .MuiSelect-icon": {
-                color: "rgba(0, 128, 128, 0.7)", 
+                color: "rgba(0, 128, 128, 0.7)",
               }
             }}>
               <InputLabel>Venue</InputLabel>
@@ -242,50 +212,10 @@ const NewEvent = () => {
           Start
         </Button>
 
-        {/* <Modal open={openParent} onClose={() => setOpenParent(false)} className="modal">
-          <Box>
-            <div className="modal-description">
-              <Typography variant="h6">Entered Details</Typography>
-              <Typography>Event Name: {eventName}</Typography>
-              <Typography>Venue: {venue}</Typography>
-              <Typography>Event Date: {eventDate ? eventDate.toString() : ''}</Typography>
-              <Typography>Start Time: {startTime}</Typography>
-              <Typography>End Time: {endTime}</Typography>
-              <Button onClick={handleEditButtonClick}>Edit</Button>
-              <Button onClick={handleProceedButtonClick}>Proceed</Button>
-            </div>
-          </Box>
-        </Modal> */}
+        {modal1 && (
+          <Modal1 open={modal1} onClose={() => setModal1(false)} />
+        )}
 
-        {/* <Modal open={openChild} onClose={() => setOpenChild(false)} className="modal">
-          <Box>
-            <div className="modal-description">
-
-              <Button onClick={handleContinueButtonClick}>Continue</Button>
-              <Button onClick={() => setOpenParent(true)} >Cancel</Button>
-            </div>
-          </Box>
-        </Modal> */}
-
-        {/* <Modal open={openQRModal} onClose={() => setOpenQRModal(false)} className="modal">
-          <Box>
-            <div className="modal-description">
-              Display QR code
-              <Button onClick={handleQRFinishButtonClick}>Finish</Button>
-              <Button onClick={() => setOpenChild(true)}>Cancel</Button>
-            </div>
-          </Box>
-        </Modal> */}
-
-        {/* <Modal open={openFinishModal} onClose={() => setOpenFinishModal(false)} className="modal">
-          <Box>
-            <div className="modal-description">
-              Display finish confirmation
-              <Button onClick={handleFinishConfirmation}>Continue</Button>
-              <Button onClick={() => setOpenQRModal(true)}>Cancel</Button>
-            </div>
-          </Box>
-        </Modal> */}
 
       </div>
       <img src={downimg} alt="downImg" style={downImg} />
