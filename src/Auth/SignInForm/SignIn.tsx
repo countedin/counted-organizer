@@ -36,7 +36,7 @@ const SignIn = () => {
       console.log(signinEmail);
 
       const apiRes = await apiRegExistingUser({ ipEmail: signinEmail })
-      if (apiRes.status == 200) {
+      if (apiRes.status > 200) {
         navigate('/home')
       }
       console.log(apiRes)

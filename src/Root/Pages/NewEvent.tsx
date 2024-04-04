@@ -49,7 +49,7 @@ const NewEvent = () => {
   const [endTime, setEndTime] = useState(null);
 
 
-  // const localAppID = localStorage.getItem('appUserId')
+  const localAppID = localStorage.getItem('appUserId')
 
   const handleEventDateChange = (date: SetStateAction<null>) => {
     setEventDate(date);
@@ -64,21 +64,15 @@ const NewEvent = () => {
   };
 
   const [modal1, setModal1] = useState(false);
-  const localAppID = localStorage.getItem('appUserId');
 
   const handleStartButtonClick = async () => {
-
-    setModal1(true);
-    console.log(Name)
-    console.log(venue)
-    console.log(eventDate)
-    console.log(startTime)
-    console.log(endTime)
-
     const apiRes = await apiCreateNewEvent(localAppID?.toString() || "",
       { keyEventName: Name, keyVenue: venue, keyStartTime: startTime, keyEndTime: endTime, keyCreatedBy: localAppID, keyTags: [], keyAttended: false })
 
     console.log(apiRes);
+    if (apiRes.status > 200) {
+      setModal1(true);
+    }
   };
 
 

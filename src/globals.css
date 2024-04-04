@@ -317,11 +317,25 @@ body {
   max-height: 900px;
 }
 
+.test{
+  border: 1px solid;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.test .close{
+  margin-right: -150px;
+}
+
+
 .close-container{               /* Root - Pages - TopBar - close-container */
   display: flex;
   flex-direction: column;
   flex: 1,1,auto;
 }
+
 
 .profile-txt1{                  /* Root - Pages - TopBar - profile-txt1 */
   color: rgba(51, 51, 102, 1);

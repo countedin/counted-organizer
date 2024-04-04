@@ -13,6 +13,8 @@ import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import { apiGetUserDetails } from "../../services/BEApis/AuthAPIs";
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
+import { Link } from "react-router-dom";
+// import { apiPostRequestHelp } from "../../services/BEApis/EventAPIs";
 
 const CssTextField = styled(TextField)({
   '& label.Mui-focused': {
@@ -61,7 +63,7 @@ const TopBar = () => {
     fetchUserDetails();
   });
 
-  const openModalHandler = (modalNumber: number) => {
+  const openModalHandler = async (modalNumber: number) => {
     switch (modalNumber) {
       case 1:
         setOpenModal1(true);
@@ -114,9 +116,9 @@ const TopBar = () => {
 
     <>
       <div className="navbar">
-        <div className="logo"><a href="/home"><img src={logo} alt="logo" /></a></div>
+        <div className="logo"><Link to="/home"><img src={logo} alt="logo" /></Link></div>
         <div className="nav-content">
-          <a href="/aboutus" id="nav-item">About Us</a>
+          <Link to="/aboutus" id="nav-item">About Us</Link>
           <div id="nav-item" onClick={() => openModalHandler(1)}>Support</div>
           <div id="nav-item" onClick={() => openModalHandler(2)}>Profile</div>
         </div>
@@ -153,10 +155,9 @@ const TopBar = () => {
                     value={venue}
                     onChange={(e) => setVenue(e.target.value)}
                   >
-                    <MenuItem value={''}></MenuItem>
-                    <MenuItem value={''}></MenuItem>
-                    <MenuItem value={''}></MenuItem>
-                    <MenuItem value={''}></MenuItem>
+                    <MenuItem value={'Event Details'}>Edit Event Details</MenuItem>
+                    <MenuItem value={'Edit Profile'}>Edit profile</MenuItem>
+                    <MenuItem value={'Others'}>Others</MenuItem>
                   </Select>
                 </FormControl>
               </ThemeProvider>
@@ -187,12 +188,13 @@ const TopBar = () => {
         <Fade in={openModal2}>
           <div className="modalProfile">
             <div className="profile-description">
-              <div className="flex flex-1 flex-col">
+              <div className="close-container">
                 <div className="profile-logo">
-                  <img src={profile} alt="logo" width="90px" height="90px" />
+                <div className="test"><img src={profile} alt="logo" width="90px" height="90px" />
                   <span className="close" onClick={() => closeModalHandler(2)}>
                     &times;
                   </span>
+                </div>
                 </div>
                 <div className="flex flex-col profile-detail">
                   <TextField
