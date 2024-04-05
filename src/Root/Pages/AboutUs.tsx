@@ -15,8 +15,6 @@ const AboutUs = () => {
 
   const aboutUsimgStyle = {
     width: '460px',
-    // height: '449.97px',
-    // margin: '15px',
   }
 
 

@@ -22,7 +22,7 @@ const ExportPage = () => {
   const navigate = useNavigate();
 
   const handleBackButtonClick = () => {
-    navigate(-1); // Navigate back in the history stack
+    navigate(-1); 
   };
 
 
