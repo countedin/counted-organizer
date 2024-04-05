@@ -10,13 +10,13 @@ const AboutUs = () => {
   const navigate = useNavigate();
 
   const handleBackButtonClick = () => {
-    navigate(-1); // Navigate back in the history stack
+    navigate(-1);
   };
 
   const aboutUsimgStyle = {
-    width: '460px',
-    height: '449.97px',
-    margin: '15px',
+    // width: '460px',  
+    // height: '449.97px',
+    // margin: '15px',
   }
 
 

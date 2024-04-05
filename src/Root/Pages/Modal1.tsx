@@ -2,7 +2,6 @@ import Box from "@mui/material/Box"
 import Button from "@mui/material/Button"
 import Modal from "@mui/material/Modal"
 import { useEffect, useState } from "react";
-import Modal2 from "./Modal2";
 import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
 import React from "react";
@@ -195,14 +194,6 @@ const Modal1: React.FC<Modal1Props> = ({ open, onClose }) => {
                     </Box>
                 </div>
             </Modal>
-
-            {
-                modal2 && (
-                    <Modal2
-                        open={modal2}
-                        onClose={onClose} />
-                )
-            }
         </>
 
     )
