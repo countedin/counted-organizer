@@ -16,13 +16,14 @@ import TableRow from "@mui/material/TableRow";
 import TableCell from "@mui/material/TableCell";
 import TableBody from "@mui/material/TableBody";
 import { useNavigate } from 'react-router-dom';
+import { useState } from "react";
 
 const ExportPage = () => {
 
   const navigate = useNavigate();
 
   const handleBackButtonClick = () => {
-    navigate(-1); 
+    navigate(-1); // Go back to the previous page
   };
 
 
@@ -37,6 +38,12 @@ const ExportPage = () => {
     createData(5, 'Teja Kumar','1NT20CS149','CSE',4,'1nt20cs149.tejukumar@nmit.ac.in'),
   ];
   
+  const [searchQuery, setSearchQuery] = useState('');
+  const filteredRows = rows.filter(
+    (row) =>
+      row.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      row.usn.toLowerCase().includes(searchQuery.toLowerCase())
+  );  
 
 
 
@@ -122,6 +129,8 @@ const ExportPage = () => {
             <InputBase
               placeholder="Search name or usn"
               inputProps={{ 'aria-label': 'name || usn' }}
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
             />
           </div>
         </div>
@@ -138,7 +147,7 @@ const ExportPage = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {rows.map((row) => (
+            {filteredRows.map((row) => (
                 <TableRow key={row.slno}>
                   <TableCell component="th" scope="row">
                     {row.slno}
