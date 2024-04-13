@@ -437,8 +437,8 @@ body {
 }
 
 .home-tab {           /* Root - Pages - HomeTab - home-tab */
-  height: 50px;
-  background-color: rgba(219, 234, 254, 1);
+  height: 55px;
+  background-color: rgba(219, 234, 254, 0.9);
 }
 
 .tab-list {            /* Root - Pages - HomeTab - tab-list */
@@ -447,20 +447,21 @@ body {
   justify-content: space-evenly;
 }
 
-#tab-event {                /* Root - Pages - HomeTab - tab-event */
+.active-tab {                /* Root - Pages - HomeTab - tab-event */
   font-family: "Poppins", sans-serif;
   font-size: medium;
-  width: 500px;
+  width: 600px;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 10px;
   border: none;
   cursor: pointer;
-  background-color: rgba(219, 234, 254, 1);
+  background-color: rgba(219, 234, 254, 0.1);
 }
 
-#tab-event:focus {          /* Root - Pages - HomeTab - tab-event */
+.active-tab:focus {          /* Root - Pages - HomeTab - tab-event */
   background-color: white;
 }
 
@@ -495,8 +496,8 @@ img[alt="downImg"] {        /* Root - Pages - NewEvent - downimg */
 
 .newEventForm {            /* Root - Pages - NewEvent - newEventForm */
   background-color: #fefefe;
-  width: 499px;
-  min-width: 299px;
+  width: 515px;
+  min-width: 300px;
   margin-left: 150px;
   padding: 25px;
   display: flex;
@@ -519,8 +520,8 @@ img[alt="downImg"] {        /* Root - Pages - NewEvent - downimg */
 
 .inp-txt {              /* Root - Pages - NewEvent - inp-txt */
   font-family: "Poppins", sans-serif;
-  font-size: small;
-  font-weight: 500;
+  font-size: 15px;
+  font-weight: 575px;
   color: rgba(51, 51, 102, 1);
 }
 

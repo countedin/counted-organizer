@@ -10,24 +10,25 @@ const HomeTab = () => {
 
   return (
     <>
-     <Tabs defaultValue={'newevent'} className="home-tab">
-       <TabsList className="tab-list">
-         <Tab id="tab-event" value={'newevent'}>
-           New Event
-         </Tab>
-         <Tab id="tab-event" value={'pastevents'}>
-           Past Events
-         </Tab>
-       </TabsList>
-       <TabPanel  value={'newevent'}>
-         <NewEvent/>
-       </TabPanel>
-       <TabPanel  value={'pastevents'}>
-         <PastEvents/>
-       </TabPanel>
-     </Tabs>
+      <Tabs defaultValue={'newevent'} className="home-tab">
+        <TabsList className="tab-list">
+          <Tab id="tab-event-new" value={'newevent'} className="active-tab">
+            New Event
+          </Tab>
+          <Tab id="tab-event-past" value={'pastevents'} className="active-tab">
+            Past Events
+          </Tab>
+        </TabsList>
+        <TabPanel value={'newevent'}>
+          <NewEvent />
+        </TabPanel>
+        <TabPanel value={'pastevents'}>
+          <PastEvents />
+        </TabPanel>
+      </Tabs>
     </>
-  )  
+
+  )
 }
 
 export default HomeTab
