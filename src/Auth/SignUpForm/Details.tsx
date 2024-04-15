@@ -13,10 +13,10 @@ const Details = () => {
   const [Email, setEmail] = useState();
   const navigate = useNavigate();
 
-  const localAppID = localStorage.getItem('appUserId')
+  const email = localStorage.getItem('regEmail')
 
   const fetchUserDetails = async () => {
-    const response = await apiGetUserDetails(localAppID?.toString() || "")
+    const response = await apiGetUserDetails(email?.toString() || "")
     setName(await response.data.data.keyUsername)
     setEmployeeId(await response.data.data.keyEmpId)
     setDepartment(await response.data.data.keyDepartment)

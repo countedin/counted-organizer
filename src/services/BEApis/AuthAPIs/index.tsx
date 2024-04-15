@@ -18,8 +18,14 @@ export const apiVerifyCode = (data : any) => {
     return response;
 }
 
-export const apiGetUserDetails = ( appUserId : string ) => {
+export const apiGetUserbyAppIdDetails = ( appUserId : string ) => {
     const response = apiInstance.get(`profile/get-user?appUserId=${appUserId}`);
+    console.log("API RES" , response);
+    return response;
+}
+
+export const apiGetUserDetails = ( email : string ) => {
+    const response = apiInstance.get(`profile/get-user?email=${email}`);
     console.log("API RES" , response);
     return response;
 }

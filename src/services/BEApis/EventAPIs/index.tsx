@@ -12,3 +12,9 @@ export const apiGetEventDetails = ( keyAppEventId : string ) => {
     console.log("API RES" , response);
     return response;
 }
+
+export const apiPostRequestHelp = ( appUserId:string ) => {
+    const response = apiInstance.get(`/help/create-ticket/:keyAppUserId=${appUserId}`);
+    console.log("API RES" , response);
+    return response;
+}

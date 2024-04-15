@@ -13,6 +13,8 @@ import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import { apiGetUserDetails } from "../../services/BEApis/AuthAPIs";
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
+import { Link } from "react-router-dom";
+// import { apiPostRequestHelp } from "../../services/BEApis/EventAPIs";
 
 const CssTextField = styled(TextField)({
   '& label.Mui-focused': {
@@ -61,7 +63,7 @@ const TopBar = () => {
     fetchUserDetails();
   });
 
-  const openModalHandler = (modalNumber: number) => {
+  const openModalHandler = async (modalNumber: number) => {
     switch (modalNumber) {
       case 1:
         setOpenModal1(true);
@@ -114,9 +116,9 @@ const TopBar = () => {
 
     <>
       <div className="navbar">
-        <div className="logo"><a href="/home"><img src={logo} alt="logo" /></a></div>
+        <div className="logo"><Link to="/home"><img src={logo} alt="logo" /></Link></div>
         <div className="nav-content">
-          <a href="/aboutus" id="nav-item">About Us</a>
+          <Link to="/aboutus" id="nav-item">About Us</Link>
           <div id="nav-item" onClick={() => openModalHandler(1)}>Support</div>
           <div id="nav-item" onClick={() => openModalHandler(2)}>Profile</div>
         </div>
@@ -126,11 +128,14 @@ const TopBar = () => {
         <Fade in={openModal1}>
           <div className="modal">
             <div className="modal-description">
-              <span className="close" onClick={() => closeModalHandler(1)}>
-                &times;
-              </span>
-              <h2>Need help</h2>
-              <h4>Breifly explain us your problem.We will resolve it soon.</h4>
+              <div className="close-container">
+                <h2 className="profile-txt1">Need help ?
+                  <span className="close" onClick={() => closeModalHandler(1)}>
+                    &times;
+                  </span>
+                </h2>
+                <h4 className="profile-txt2">Breifly explain us your problem.We will resolve it soon.</h4>
+              </div>
               <ThemeProvider theme={theme}>
                 <FormControl fullWidth sx={{
                   "& .MuiOutlinedInput-root": {
@@ -141,7 +146,8 @@ const TopBar = () => {
                   "& .MuiSelect-icon": {
                     color: "rgba(0, 200, 166, 1)",
                   },
-                  marginBottom: '20px'
+                  marginBottom: '20px',
+                  width: '95%',
                 }}>
                   <InputLabel style={{ backgroundColor: "white" }}>Category</InputLabel>
                   <Select
@@ -149,10 +155,9 @@ const TopBar = () => {
                     value={venue}
                     onChange={(e) => setVenue(e.target.value)}
                   >
-                    <MenuItem value={''}></MenuItem>
-                    <MenuItem value={''}></MenuItem>
-                    <MenuItem value={''}></MenuItem>
-                    <MenuItem value={''}></MenuItem>
+                    <MenuItem value={'Event Details'}>Edit Event Details</MenuItem>
+                    <MenuItem value={'Edit Profile'}>Edit profile</MenuItem>
+                    <MenuItem value={'Others'}>Others</MenuItem>
                   </Select>
                 </FormControl>
               </ThemeProvider>
@@ -167,7 +172,7 @@ const TopBar = () => {
               />
               <div className="helper-text">{`${values.name.length}/${CHARACTER_LIMIT}`}</div>
               <Button
-                fullWidth
+                sx={{ width: '95%' }}
                 variant="contained"
                 id="btn-start"
                 style={{ textTransform: 'none', fontWeight: '600', fontSize: '15px', fontFamily: 'Poppins' }}
@@ -183,14 +188,15 @@ const TopBar = () => {
         <Fade in={openModal2}>
           <div className="modalProfile">
             <div className="profile-description">
-              <span className="close" onClick={() => closeModalHandler(2)}>
-                &times;
-              </span>
-              <div className="flex flex-1 flex-col ">
+              <div className="close-container">
                 <div className="profile-logo">
-                  <img src={profile} alt="logo" width="90px" height="90px" />
+                <div className="test"><img src={profile} alt="logo" width="90px" height="90px" />
+                  <span className="close" onClick={() => closeModalHandler(2)}>
+                    &times;
+                  </span>
                 </div>
-                <div className="flex flex-col gap-2 detail-card">
+                </div>
+                <div className="flex flex-col profile-detail">
                   <TextField
                     disabled
                     label="Name"
@@ -199,11 +205,12 @@ const TopBar = () => {
                     InputProps={{
                       style: {
                         backgroundColor: '#f5f5f5',
+                        width: '100%',
 
                       },
                       disableUnderline: true,
                     }}
-                    style={{ ...styles.textField, flexGrow: 1, width: '80%'}}
+                    style={{ ...styles.textField, flexGrow: 1, width: '80%' }}
                   />
 
                   <TextField
@@ -217,7 +224,7 @@ const TopBar = () => {
                       },
                       disableUnderline: true,
                     }}
-                    style={{ ...styles.textField, flexGrow: 1, width: '80%'}}
+                    style={{ ...styles.textField, flexGrow: 1, width: '80%' }}
                   />
 
                   <TextField
@@ -245,7 +252,7 @@ const TopBar = () => {
                       },
                       disableUnderline: true,
                     }}
-                    style={{ ...styles.textField, flexGrow: 1, width: '80%'}}
+                    style={{ ...styles.textField, flexGrow: 1, width: '80%' }}
                   />
                 </div>
                 <div className="icon-container">
