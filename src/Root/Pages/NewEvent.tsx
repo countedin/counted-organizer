@@ -103,7 +103,7 @@ const NewEvent = () => {
       <div className="newEventForm">
         <h3 className="card-txt">Tell us about the event</h3>
         <div className="inp-container">
-          <h4 className="inp-txt">Share the name of the event</h4>
+          <h4 className="inp-txt mb-2">Share the name of the event</h4>
           <CssTextField
             fullWidth
             label="Event name"
@@ -114,7 +114,7 @@ const NewEvent = () => {
           />
         </div>
         <div className="inp-container">
-          <h4 className="inp-txt">Where did this happen ?</h4>
+          <h4 className="inp-txt mb-2">Where did this happen ?</h4>
           <ThemeProvider theme={theme}>
             <FormControl fullWidth sx={{
               "& .MuiOutlinedInput-root": {
@@ -142,7 +142,7 @@ const NewEvent = () => {
           </ThemeProvider>
         </div>
         <div className="inp-container">
-          <h4 className="inp-txt">
+          <h4 className="inp-txt mb-2">
             What date did your event conquer the calendar
           </h4>
           <ThemeProvider theme={theme}>
@@ -176,13 +176,13 @@ const NewEvent = () => {
           </ThemeProvider>
         </div>
         <div className="inp-container">
-          <h4 className="inp-txt">
+          <h4 className="inp-txt mb-2">
             Tell us the event's start and end times.
           </h4>
           <ThemeProvider theme={theme}>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
               <DemoContainer components={["TimePicker", "TimePicker"]}>
-                <h4 className="inp-txt">From</h4>
+                <h4 className="inp-txt mb-2">From</h4>
                 <TimePicker
                   sx={{
                     width: "100%",
@@ -198,7 +198,7 @@ const NewEvent = () => {
                   value={startTime}
                   onChange={handleStartTimeChange}
                 />
-                <h4 className="inp-txt">To</h4>
+                <h4 className="inp-txt mb-2">To</h4>
                 <TimePicker
                   sx={{
                     width: "100%",

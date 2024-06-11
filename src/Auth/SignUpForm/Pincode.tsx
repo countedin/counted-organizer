@@ -49,7 +49,7 @@ const Pincode = () => {
   return (
     
     <div className="pincode-form">
-      <div className="signtxt">
+      <div className="">
         <h3 id="pincode-txt1">Setup 4 digit PIN</h3>
         <h4 id="pincode-txt2">We ask you each time when you are creating an event</h4>
       </div>
