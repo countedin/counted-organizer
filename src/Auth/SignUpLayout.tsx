@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
 import frame from "../assets/Images/Frame.png";
-import Signup from "../assets/Images/Signup.png";
+// import Signup from "../assets/Images/Signup.png";
 
 
 const SignUpLayout = () => {
@@ -8,12 +8,12 @@ const SignUpLayout = () => {
     <>
         <div className="authWrapper">
           <div className="left-container">
-            <img src={Signup} alt="signup" id="signup-img" />
+            {/* <img src={Signup} alt="signup" id="signup-img" /> */}
           </div>
 
           <div className="right-container">
             <div className="row1">
-              <img src={frame} alt="logo" id="auth-frame" />
+              <img onClick={() => window.history.back()} src={frame} alt="logo" id="auth-frame" />
             </div>
             <div className="row2">
               <Outlet />
